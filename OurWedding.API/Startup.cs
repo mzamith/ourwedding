@@ -100,7 +100,7 @@ namespace OurWedding.API
             });
             services.AddCors();
             //services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
-            //services.AddAutoMapper(typeof(DatingRepository).Assembly);
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             //services.AddScoped<IAuthRepository, AuthRepository>();
             //services.AddScoped<IDatingRepository, DatingRepository>();
             //services.AddScoped<LogUserActivity>();
@@ -136,13 +136,13 @@ namespace OurWedding.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index", "Fallback");
+                //endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

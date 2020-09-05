@@ -1,7 +1,10 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using OurWedding.API.Models;
 
 namespace OurWedding.API.Helpers
 {
@@ -13,6 +16,16 @@ namespace OurWedding.API.Helpers
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+
+        public static async Task<Invite> FindByAccessKeyAsync(this UserManager<Invite> userManager, string accessKey)
+        {
+            return await userManager.Users.SingleOrDefaultAsync(u => u.AccessKey == accessKey);
+        }
+
+        public static bool IsAny<T>(this IEnumerable<T> data)
+        {
+            return data != null && data.Any();
         }
 
     }
