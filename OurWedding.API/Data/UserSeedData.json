@@ -1,0 +1,40 @@
+[{
+        "UserName": "FamilyOne",
+        "AccessKey": "randomaccesskey1",
+        "Name": "Family One",
+        "Password": "password",
+        "Created": "2017-08-02",
+        "LastActive": "2017-08-02",
+        "Invitees": [{
+            "Name": "Guest 11",
+            "IsMainGuest": true
+        }, {
+            "Name": "Guest 12",
+            "IsMainGuest": true
+        }],
+        "InviteAnswers": [{
+            "Comment": "Answer Comment 1",
+            "AnswerDate": "2020-08-02",
+            "Status": "H"
+        }, {
+            "Comment": "Answer Comment 2",
+            "AnswerDate": "2020-08-03",
+            "Status": "V"
+        }]
+    },
+    {
+        "UserName": "FamilyTwo",
+        "AccessKey": "randomaccesskey2",
+        "Name": "Family Two",
+        "Password": "password",
+        "Created": "2017-08-02",
+        "LastActive": "2017-08-02",
+        "Invitees": [{
+            "Name": "Guest 21",
+            "IsMainGuest": false
+        }, {
+            "Name": "Guest 22",
+            "IsMainGuest": true
+        }]
+    }
+]
