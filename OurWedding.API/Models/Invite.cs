@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using OurWedding.API.Dtos;
+using OurWedding.API.Helpers;
 
 namespace OurWedding.API.Models
 {
@@ -14,5 +18,6 @@ namespace OurWedding.API.Models
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<Invitee> Invitees { get; set; }
         public virtual ICollection<InviteAnswer> InviteAnswers { get; set; }
+
     }
 }

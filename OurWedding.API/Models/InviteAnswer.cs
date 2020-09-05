@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using OurWedding.API.Data;
 
 namespace OurWedding.API.Models
 {
-    public class InviteAnswer
+    public class InviteAnswer : IHasStatus
     {
         public int Id { get; set; }
         public int InviteId { get; set; }

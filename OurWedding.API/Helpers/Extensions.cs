@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using OurWedding.API.Data;
 using OurWedding.API.Models;
 
 namespace OurWedding.API.Helpers
@@ -26,6 +27,17 @@ namespace OurWedding.API.Helpers
         public static bool IsAny<T>(this IEnumerable<T> data)
         {
             return data != null && data.Any();
+        }
+
+        public static void SetStatus<T>(this IEnumerable<T> data, string status)
+        {
+            foreach (var item in data)
+            {
+                if (typeof(IHasStatus).IsInstanceOfType(item))
+                {
+                    ((IHasStatus)(object)item).Status = status;
+                }
+            }
         }
 
     }

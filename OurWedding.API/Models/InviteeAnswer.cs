@@ -1,8 +1,9 @@
 using System;
+using OurWedding.API.Data;
 
 namespace OurWedding.API.Models
 {
-    public class InviteeAnswer
+    public class InviteeAnswer : IHasStatus
     {
         public int Id { get; set; }
         public int InviteeId { get; set; }

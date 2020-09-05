@@ -32,5 +32,21 @@ namespace OurWedding.API.Controllers
             return Ok(inviteToReturn);
         }
 
+        [HttpPost("{id}")]
+        public async Task<IActionResult> UpdateInvite(int id, InviteUpdateDto inviteDetails)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var invite = await _repo.GetInviteDetails(id);
+            _mapper.Map(inviteDetails, invite);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            return BadRequest("Failed to Post RSVP");
+
+        }
+
     }
 }

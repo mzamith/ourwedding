@@ -1,8 +1,9 @@
 using System;
+using OurWedding.API.Data;
 
 namespace OurWedding.API.Dtos
 {
-    public class InviteeAnswerDto
+    public class InviteeAnswerDto : IHasStatus
     {
         public int Id { get; set; }
         public string Status { get; set; }
