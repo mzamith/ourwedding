@@ -28,6 +28,18 @@ namespace OurWedding.API.Data
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
+        public async Task<ICollection<Recommendation>> GetRecommendations(string category)
+        {
+            if (category.Equals("All"))
+            {
+                return await _context.Recommendations.ToListAsync();
+            }
+            else
+            {
+                return await _context.Recommendations.Where(r => r.Category.Equals(category.ToUpper())).ToListAsync();
+            }
+        }
+
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
