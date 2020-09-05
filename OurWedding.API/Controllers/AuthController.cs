@@ -39,7 +39,7 @@ namespace OurWedding.API.Controllers
         {
             var inviteFromRepo = await _userManager.FindByAccessKeyAsync(key.AccessKey);
 
-            if (inviteFromRepo != null)
+            if (inviteFromRepo != null && !inviteFromRepo.IsBlacklisted)
             {
                 var userToReturn = _mapper.Map<InviteHomeDto>(inviteFromRepo);
 
@@ -60,8 +60,6 @@ namespace OurWedding.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.UserName)
             };
-
-            //var roles = await _userManager.GetRolesAsync(userFromRepo);
 
             foreach (var role in userFromRepo.UserRoles)
             {

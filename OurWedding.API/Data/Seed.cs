@@ -34,7 +34,7 @@ namespace OurWedding.API.Data
                     userManager.AddToRoleAsync(invite, "Guest").Wait();
                 }
 
-                AddInviteeAnswers(userManager);
+                //AddInviteeAnswers(userManager);
 
                 var adminUser = new Invite
                 {
@@ -53,53 +53,53 @@ namespace OurWedding.API.Data
             }
         }
 
-        private static void AddInviteeAnswers(UserManager<Invite> userManager)
-        {
-            var familyOne = userManager.FindByNameAsync("FamilyOne").Result;
+        // private static void AddInviteeAnswers(UserManager<Invite> userManager)
+        // {
+        //     var familyOne = userManager.FindByNameAsync("FamilyOne").Result;
 
-            var guest11 = familyOne.Invitees.FirstOrDefault(x => x.Name == "Guest 11");
-            var guest12 = familyOne.Invitees.FirstOrDefault(x => x.Name == "Guest 12");
+        //     var guest11 = familyOne.Invitees.FirstOrDefault(x => x.Name == "Guest 11");
+        //     var guest12 = familyOne.Invitees.FirstOrDefault(x => x.Name == "Guest 12");
 
-            var inviteeAnswerVegan = new InviteeAnswer
-            {
-                IsAtending = true,
-                Status = "V",
-                Restriction = "Vegan",
-                Invitee = guest11
-            };
-            var inviteeAnswerNormal = new InviteeAnswer
-            {
-                IsAtending = true,
-                Status = "V",
-                Invitee = guest12
-            };
-            var inviteeAnswerNormalNotAtt = new InviteeAnswer
-            {
-                IsAtending = false,
-                Status = "H",
-                Invitee = guest12
-            };
-            var inviteeAnswerVeganH = new InviteeAnswer
-            {
-                IsAtending = true,
-                Status = "H",
-                Restriction = "Vegan",
-                Invitee = guest11
-            };
+        //     var inviteeAnswerVegan = new InviteeAnswer
+        //     {
+        //         IsAtending = true,
+        //         Status = "V",
+        //         Restriction = "Vegan",
+        //         Invitee = guest11
+        //     };
+        //     var inviteeAnswerNormal = new InviteeAnswer
+        //     {
+        //         IsAtending = true,
+        //         Status = "V",
+        //         Invitee = guest12
+        //     };
+        //     var inviteeAnswerNormalNotAtt = new InviteeAnswer
+        //     {
+        //         IsAtending = false,
+        //         Status = "H",
+        //         Invitee = guest12
+        //     };
+        //     var inviteeAnswerVeganH = new InviteeAnswer
+        //     {
+        //         IsAtending = true,
+        //         Status = "H",
+        //         Restriction = "Vegan",
+        //         Invitee = guest11
+        //     };
 
-            var historyAnswer = familyOne.InviteAnswers.FirstOrDefault(x => x.Status == "H");
-            var currentAnswer = familyOne.InviteAnswers.FirstOrDefault(x => x.Status == "V");
+        //     var historyAnswer = familyOne.InviteAnswers.FirstOrDefault(x => x.Status == "H");
+        //     var currentAnswer = familyOne.InviteAnswers.FirstOrDefault(x => x.Status == "V");
 
-            historyAnswer.InviteeAnswers = new List<InviteeAnswer>();
-            historyAnswer.InviteeAnswers.Add(inviteeAnswerNormalNotAtt);
-            historyAnswer.InviteeAnswers.Add(inviteeAnswerVeganH);
+        //     historyAnswer.InviteeAnswers = new List<InviteeAnswer>();
+        //     historyAnswer.InviteeAnswers.Add(inviteeAnswerNormalNotAtt);
+        //     historyAnswer.InviteeAnswers.Add(inviteeAnswerVeganH);
 
-            currentAnswer.InviteeAnswers = new List<InviteeAnswer>();
-            currentAnswer.InviteeAnswers.Add(inviteeAnswerNormal);
-            currentAnswer.InviteeAnswers.Add(inviteeAnswerVegan);
+        //     currentAnswer.InviteeAnswers = new List<InviteeAnswer>();
+        //     currentAnswer.InviteeAnswers.Add(inviteeAnswerNormal);
+        //     currentAnswer.InviteeAnswers.Add(inviteeAnswerVegan);
 
-            userManager.UpdateAsync(familyOne).Wait();
-        }
+        //     userManager.UpdateAsync(familyOne).Wait();
+        // }
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {

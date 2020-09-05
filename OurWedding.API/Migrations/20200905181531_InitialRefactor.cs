@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OurWedding.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialRefactor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,7 +45,8 @@ namespace OurWedding.API.Migrations
                     AccessKey = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    LastActive = table.Column<DateTime>(nullable: false)
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    IsBlacklisted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,17 +232,11 @@ namespace OurWedding.API.Migrations
                     Status = table.Column<string>(nullable: true),
                     Restriction = table.Column<string>(nullable: true),
                     IsAtending = table.Column<bool>(nullable: false),
-                    InviteAnswerId = table.Column<int>(nullable: true)
+                    AnswerDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InviteeAnswer", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_InviteeAnswer_InviteAnswer_InviteAnswerId",
-                        column: x => x.InviteAnswerId,
-                        principalTable: "InviteAnswer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_InviteeAnswer_Invitee_InviteeId",
                         column: x => x.InviteeId,
@@ -298,11 +293,6 @@ namespace OurWedding.API.Migrations
                 column: "InviteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InviteeAnswer_InviteAnswerId",
-                table: "InviteeAnswer",
-                column: "InviteAnswerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_InviteeAnswer_InviteeId",
                 table: "InviteeAnswer",
                 column: "InviteeId");
@@ -326,6 +316,9 @@ namespace OurWedding.API.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "InviteAnswer");
+
+            migrationBuilder.DropTable(
                 name: "InviteeAnswer");
 
             migrationBuilder.DropTable(
@@ -333,9 +326,6 @@ namespace OurWedding.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "InviteAnswer");
 
             migrationBuilder.DropTable(
                 name: "Invitee");

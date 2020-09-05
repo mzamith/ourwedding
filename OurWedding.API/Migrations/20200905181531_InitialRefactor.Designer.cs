@@ -9,8 +9,8 @@ using OurWedding.API.Data;
 namespace OurWedding.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200905153456_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200905181531_InitialRefactor")]
+    partial class InitialRefactor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,6 +128,9 @@ namespace OurWedding.API.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsBlacklisted")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
@@ -232,8 +235,8 @@ namespace OurWedding.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InviteAnswerId")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("AnswerDate")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("InviteeId")
                         .HasColumnType("INTEGER");
@@ -248,8 +251,6 @@ namespace OurWedding.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("InviteAnswerId");
 
                     b.HasIndex("InviteeId");
 
@@ -389,12 +390,8 @@ namespace OurWedding.API.Migrations
 
             modelBuilder.Entity("OurWedding.API.Models.InviteeAnswer", b =>
                 {
-                    b.HasOne("OurWedding.API.Models.InviteAnswer", null)
-                        .WithMany("InviteeAnswers")
-                        .HasForeignKey("InviteAnswerId");
-
                     b.HasOne("OurWedding.API.Models.Invitee", "Invitee")
-                        .WithMany()
+                        .WithMany("InviteeAnswers")
                         .HasForeignKey("InviteeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

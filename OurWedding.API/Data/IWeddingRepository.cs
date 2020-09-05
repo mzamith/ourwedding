@@ -11,7 +11,7 @@ namespace OurWedding.API.Data
 
         Task<bool> SaveAll();
 
-        Task<Invite> GetInvite();
+        Task<Invite> GetInviteDetails(int id);
 
     }
 }

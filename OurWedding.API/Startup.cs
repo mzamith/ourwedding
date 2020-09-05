@@ -102,7 +102,7 @@ namespace OurWedding.API
             //services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             //services.AddScoped<IAuthRepository, AuthRepository>();
-            //services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<IWeddingRepository, WeddingRepository>();
             //services.AddScoped<LogUserActivity>();
         }
 

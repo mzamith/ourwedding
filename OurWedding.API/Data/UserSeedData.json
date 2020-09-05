@@ -7,10 +7,30 @@
         "LastActive": "2017-08-02",
         "Invitees": [{
             "Name": "Guest 11",
-            "IsMainGuest": true
+            "IsMainGuest": true,
+            "InviteeAnswers": [{
+                "IsAtending": true,
+                "Status": "V",
+                "AnswerDate": "2020-08-02"
+            }, {
+                "IsAtending": true,
+                "Status": "H",
+                "AnswerDate": "2020-08-01"
+            }]
         }, {
             "Name": "Guest 12",
-            "IsMainGuest": true
+            "IsMainGuest": true,
+            "InviteeAnswers": [{
+                "IsAtending": true,
+                "Status": "V",
+                "Restriction": "Vegan",
+                "AnswerDate": "2020-08-02"
+            }, {
+                "IsAtending": false,
+                "Status": "H",
+                "Restriction": "Vegan",
+                "AnswerDate": "2020-08-01"
+            }]
         }],
         "InviteAnswers": [{
             "Comment": "Answer Comment 1",
