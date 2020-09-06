@@ -1,4 +1,4 @@
-//import { AlertifyService } from './../_services/alertify.service';
+// import { AlertifyService } from './../_services/alertify.service';
 import { AuthService } from './../_services/auth.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
@@ -9,8 +9,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
-    private router: Router,
-    //private alertify: AlertifyService
+    private router: Router // private alertify: AlertifyService
   ) {}
 
   canActivate(next: ActivatedRouteSnapshot): boolean {
@@ -21,8 +20,8 @@ export class AuthGuard implements CanActivate {
       if (match) {
         return true;
       } else {
-        this.router.navigate(['members']);
-        //this.alertify.error('Unauthorized');
+        this.router.navigate(['']);
+        // this.alertify.error('Unauthorized');
       }
     }
 
@@ -30,8 +29,8 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    //this.alertify.error('You shall not pass!!');
-    this.router.navigate(['/home']);
+    // this.alertify.error('You shall not pass!!');
+    this.router.navigate(['']);
     return false;
   }
 }
