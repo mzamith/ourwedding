@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using OurWedding.API.Data;
 using OurWedding.API.Dtos;
 using OurWedding.API.Helpers;
+using OurWedding.API.Services;
 
 namespace OurWedding.API.Controllers
 {
@@ -40,7 +41,9 @@ namespace OurWedding.API.Controllers
             inviteFromRepo.IsBlacklisted = blacklist;
 
             if (await _repo.SaveAll())
+            {
                 return NoContent();
+            }
 
             return BadRequest("Failed to Blacklist User");
         }

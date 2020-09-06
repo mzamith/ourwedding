@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using OurWedding.API.Services;
 
 namespace OurWedding.API
 {
@@ -101,6 +102,7 @@ namespace OurWedding.API
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IWeddingRepository, WeddingRepository>();
             services.AddScoped<LogUserActivity>();
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
