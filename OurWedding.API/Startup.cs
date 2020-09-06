@@ -80,8 +80,6 @@ namespace OurWedding.API
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
-                options.AddPolicy("VipOnly", policy => policy.RequireRole("VIP"));
 
             });
 
@@ -101,9 +99,8 @@ namespace OurWedding.API
             services.AddCors();
             //services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            //services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IWeddingRepository, WeddingRepository>();
-            //services.AddScoped<LogUserActivity>();
+            services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

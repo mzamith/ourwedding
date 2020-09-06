@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using OurWedding.API.Helpers;
 using OurWedding.API.Models;
 
 namespace OurWedding.API.Data
@@ -38,6 +39,32 @@ namespace OurWedding.API.Data
             {
                 return await _context.Recommendations.Where(r => r.Category.Equals(category.ToUpper())).ToListAsync();
             }
+        }
+
+        public async Task<PagedList<Invite>> GetInvites(InviteParams inviteParams)
+        {
+            var invites = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
+            invites = invites.Where(u => u.UserRoles.Select(ur => ur.Role.Name).Contains("Guest"));
+
+            if (!string.IsNullOrEmpty(inviteParams.Status))
+            {
+                if (inviteParams.Status.Equals("PENDING"))
+                {
+                    invites = invites.Where(i => !i.InviteAnswers.IsAny());
+                }
+                else
+                {
+                    invites = invites.Where(i => i.InviteAnswers.IsAny());
+                }
+            }
+
+            if (inviteParams.IsBlacklisted)
+            {
+                invites = invites.Where(i => i.IsBlacklisted);
+            }
+
+            return await PagedList<Invite>.CreateAsync(invites, inviteParams.PageNumber, inviteParams.PageSize);
+
         }
 
         public async Task<bool> SaveAll()

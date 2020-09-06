@@ -41,6 +41,9 @@ namespace OurWedding.API.Controllers
 
             if (inviteFromRepo != null && !inviteFromRepo.IsBlacklisted)
             {
+                inviteFromRepo.LastActive = DateTime.Now;
+                await _userManager.UpdateAsync(inviteFromRepo);
+
                 var userToReturn = _mapper.Map<InviteHomeDto>(inviteFromRepo);
 
                 return Ok(new

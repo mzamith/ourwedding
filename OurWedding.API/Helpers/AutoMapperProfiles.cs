@@ -26,6 +26,8 @@ namespace OurWedding.API.Helpers
 
         private void CreateMappingsForDisplay()
         {
+
+            //User Display
             CreateMap<Invite, InviteDetailsDto>()
                 .ForMember(dest => dest.InviteAnswer, opt => opt.MapFrom(src => src.InviteAnswers.FirstOrDefault(ia => ia.Status == "V")));
 
@@ -34,6 +36,10 @@ namespace OurWedding.API.Helpers
 
             CreateMap<InviteeAnswer, InviteeAnswerDto>();
             CreateMap<InviteAnswer, InviteAnswerDto>();
+
+            //Admin Display
+            CreateMap<Invitee, InviteeMultipleDto>();
+            CreateMap<Invite, InviteDetailsMultipleDto>();
         }
 
         private void CreateMappingsForUpdate()

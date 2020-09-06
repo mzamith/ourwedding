@@ -4,10 +4,13 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OurWedding.API.Data;
 using OurWedding.API.Dtos;
+using OurWedding.API.Filters;
+using OurWedding.API.Helpers;
 
 namespace OurWedding.API.Controllers
 {
-    //[ServiceFilter(typeof(LogUserActivity))]
+    [ServiceFilter(typeof(LogUserActivity))]
+    [PrivacyFilter]
     [Route("api/[controller]")]
     [ApiController]
     public class InvitesController : ControllerBase
@@ -23,9 +26,6 @@ namespace OurWedding.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInviteDetails(int id)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
-
             var invite = await _repo.GetInviteDetails(id);
             var inviteToReturn = _mapper.Map<InviteDetailsDto>(invite);
 
@@ -35,9 +35,6 @@ namespace OurWedding.API.Controllers
         [HttpPost("{id}")]
         public async Task<IActionResult> UpdateInvite(int id, InviteUpdateDto inviteDetails)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
-
             var invite = await _repo.GetInviteDetails(id);
             _mapper.Map(inviteDetails, invite);
 
