@@ -19,6 +19,8 @@ namespace OurWedding.API.Helpers
                     opt.MapFrom(src => src.InviteAnswers
                         .OrderByDescending(i => i.AnswerDate).FirstOrDefault().AnswerDate));
 
+            CreateMap<RecommendationDto, Recommendation>();
+
             CreateMappingsForDisplay();
             CreateMappingsForUpdate();
 

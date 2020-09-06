@@ -33,6 +33,18 @@ namespace OurWedding.API.Controllers
             return Ok(invitesToReturn);
         }
 
+        [HttpPut("blacklist/{id}")]
+        public async Task<IActionResult> BlacklistInvite(int id, bool blacklist = true)
+        {
+            var inviteFromRepo = await _repo.GetInviteDetails(id);
+            inviteFromRepo.IsBlacklisted = blacklist;
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            return BadRequest("Failed to Blacklist User");
+        }
+
 
     }
 }

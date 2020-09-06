@@ -71,5 +71,11 @@ namespace OurWedding.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<Recommendation> GetRecommendation(int id)
+        {
+            return await _context.Recommendations.Where(r => r.Id == id).FirstOrDefaultAsync();
+
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace OurWedding.API.Data
         Task<bool> SaveAll();
         Task<Invite> GetInviteDetails(int id);
         Task<ICollection<Recommendation>> GetRecommendations(string category);
+        Task<Recommendation> GetRecommendation(int id);
         Task<PagedList<Invite>> GetInvites(InviteParams inviteParams);
 
     }
