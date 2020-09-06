@@ -49,7 +49,7 @@ namespace OurWedding.API.Controllers
                 return Ok(new
                 {
                     token = GenerateJwtToken(inviteFromRepo),
-                    user = userToReturn
+                    invite = userToReturn
                 });
             }
 
