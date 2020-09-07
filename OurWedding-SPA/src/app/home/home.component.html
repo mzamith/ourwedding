@@ -16,7 +16,7 @@
         <a class="nav-link" (click)="scroll(schedule)">Alojamento</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="scroll(schedule)">RSVP</a>
+        <a class="nav-link" (click)="scroll(rsvp)">RSVP</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -34,4 +34,7 @@
 </div>
 <div #parking>
   <app-parking [recommendations]="recommendations"></app-parking>
+</div>
+<div #rsvp>
+  <app-rsvp-preview></app-rsvp-preview>
 </div>

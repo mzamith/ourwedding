@@ -16,6 +16,7 @@ import { AlertComponent } from './alert/alert.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ParkingComponent } from './parking/parking.component';
+import { RsvpPreviewComponent } from './rsvp-preview/rsvp-preview.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -38,6 +39,7 @@ export function getToken(): string {
     JumbotronComponent,
     ScheduleComponent,
     ParkingComponent,
+    RsvpPreviewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+<div class="container" style="text-align: center;">
+  <h1 class="mb-4">RSVP</h1>
+  <div class="row">
+
+    <div *ngIf="!invite.answered" class="col-sm-5 col-12 h-100">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 70vh;">
+        <div class="card-img-wrapper mb-2 mt-5">
+          <img width="50px" class="" src="https://img.icons8.com/dusk/64/000000/reply-arrow.png" />
+        </div>
+        <div class="card-body p-1 m-2">
+          <h6 classs="card-title text-center mb-5">{{invite.name}}:</h6>
+          <p class="card-text text-muted text-center mt-5">Temos todo o gosto em receber-vos no nosso dia...</p>
+          <p class="card-text text-muted text-center mt-3">Para facilitar o nosso trabalho, por favor responde o mais
+            cedo possível!</p>
+          <small>Agradecemos uma resposta antes do dia 10/10/2021</small>
+          <a class="btn btn-light text-center mt-5" target="_blank" rel="noopener noreferrer" href=""><i
+              class="fa fa-reply mr-2"></i>Responder</a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="invite.answered" class="col-sm-5 col-12 h-100">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 70vh;">
+        <div class="card-img-wrapper mb-2 mt-5">
+          <img width="50px" class="" src="https://img.icons8.com/bubbles/50/000000/edit.png" />
+        </div>
+        <div class="card-body p-1 m-2">
+          <h6 classs="card-title text-center mb-5">{{invite.name}}:</h6>
+          <p class="card-text text-muted text-center mt-5">Já deste uma resposta no dia {{invite.lastAnswered | date}}
+          </p>
+          <p class="card-text text-muted text-center mt-3">Podes sempre alterar a tua resposta!</p>
+          <small>Agradecemos uma resposta final antes do dia 10/10/2021</small>
+          <a class="btn btn-light text-center mt-5" target="_blank" rel="noopener noreferrer" href=""><i
+              class="fa fa-edit mr-2"></i>Editar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
