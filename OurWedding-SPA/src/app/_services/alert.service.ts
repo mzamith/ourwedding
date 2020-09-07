@@ -8,9 +8,8 @@ export class AlertService {
 
   constructor() {}
 
-  danger(header: string, body: string) {
+  danger(body: string) {
     this.toasts.push({
-      header,
       body,
       classname: 'bg-danger text-light',
       delay: 15000,

@@ -28,7 +28,7 @@ export class WelcomeComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.alert.danger('Erro', error);
+        this.alert.danger(error);
         this.loginForm.reset();
       }
     );

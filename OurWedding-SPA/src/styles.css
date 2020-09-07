@@ -2,5 +2,22 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootswatch/dist/litera/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
-@import "../node_modules/alertifyjs/build/css/alertify.min.css";
-@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+p,
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+span,
+h3 {
+  font-family: 'Montserrat', sans-serif;
+}

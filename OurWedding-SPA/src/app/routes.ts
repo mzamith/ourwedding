@@ -1,3 +1,4 @@
+import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { WelcomeComponent } from './welcome/welcome.component';
 // import { PreventUnsavedChangesGuard } from './_guard/prevent-unsaved-changes.guard';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +15,7 @@ export const appRoutes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-        // resolve: { users: MemberListResolver },
+        resolve: { recommendations: RecommendationsResolver },
       },
       {
         path: 'rsvp',
