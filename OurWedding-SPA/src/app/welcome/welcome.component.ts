@@ -24,7 +24,11 @@ export class WelcomeComponent implements OnInit {
   login() {
     this.authService.login(this.accessKey).subscribe(
       (next) => {
-        this.router.navigate(['/home']);
+        if (this.authService.roleMatch(['Admin'])) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         console.log(error);

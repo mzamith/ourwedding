@@ -17,6 +17,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { ParkingComponent } from './parking/parking.component';
 import { RsvpPreviewComponent } from './rsvp-preview/rsvp-preview.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
+import { AdminComponent } from './admin/admin.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -26,6 +27,8 @@ import { InviteService } from './_services/invite.service';
 import { RecommendationService } from './_services/recommendation.service';
 import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { InviteResolver } from './_resolvers/invite.resolver';
+import { AdminService } from './_services/admin.service';
+import { AdminResolver } from './_resolvers/admin.resolver';
 
 import { appRoutes } from './routes';
 
@@ -44,6 +47,7 @@ export function getToken(): string {
     ParkingComponent,
     RsvpPreviewComponent,
     RsvpComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,8 @@ export function getToken(): string {
     RecommendationService,
     InviteService,
     InviteResolver,
+    AdminService,
+    AdminResolver,
   ],
   bootstrap: [AppComponent],
 })

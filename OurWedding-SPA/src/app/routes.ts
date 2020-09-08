@@ -1,7 +1,8 @@
+import { AdminResolver } from './_resolvers/admin.resolver';
+import { AdminComponent } from './admin/admin.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { WelcomeComponent } from './welcome/welcome.component';
-// import { PreventUnsavedChangesGuard } from './_guard/prevent-unsaved-changes.guard';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
@@ -27,9 +28,9 @@ export const appRoutes: Routes = [
       },
       {
         path: 'admin',
-        component: HomeComponent,
+        component: AdminComponent,
         data: { roles: ['Admin'] },
-        // resolve: { users: MemberListResolver },
+        resolve: { invites: AdminResolver },
       },
     ],
   },

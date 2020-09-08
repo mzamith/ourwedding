@@ -1,0 +1,76 @@
+<div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled}">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Bride&Groom </div>
+    <div class="list-group list-group-flush">
+      <a href="#" class="list-group-item list-group-item-action bg-light">Convites</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Recomendações</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle" (click)="toggle($event)">Menu</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" (click)="logout()">Sair <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <h1 class="mt-4">Gestão de Convites</h1>
+      <div class="accordion mt-5" id="accordionExample">
+
+        <div class="card" *ngFor="let invite of invites">
+          <div class="card-header" id="headingOne" attr.data-target="#row{{invite.id}}" data-toggle="collapse">
+
+            <div class="row">
+              <div class="col-6">
+                <h5 class="mb-0">
+                  <p>{{invite.name}}</p>
+                </h5>
+              </div>
+              <div class="col-6">
+                <p
+                  [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}">
+                  <i class="fa fa-check-circle"></i> {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
+                  <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite) | date}})</span> </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="row{{invite.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Presença</th>
+                    <th scope="col">Restrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let guest of invite.invitees">
+                    <th scope="row">{{guest.name}}</th>
+                    <td>{{getCurrentAttendence(guest) ? 'Sim' : 'Não'}}</td>
+                    <td>{{getCurrentRestriction(guest)}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
