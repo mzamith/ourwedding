@@ -9,11 +9,11 @@
             "Name": "Guest 11",
             "IsMainGuest": true,
             "InviteeAnswers": [{
-                "IsAtending": true,
+                "IsAttending": true,
                 "Status": "V",
                 "AnswerDate": "2020-08-02"
             }, {
-                "IsAtending": true,
+                "IsAttending": true,
                 "Status": "H",
                 "AnswerDate": "2020-08-01"
             }]
@@ -21,12 +21,12 @@
             "Name": "Guest 12",
             "IsMainGuest": true,
             "InviteeAnswers": [{
-                "IsAtending": true,
+                "IsAttending": true,
                 "Status": "V",
                 "Restriction": "Vegan",
                 "AnswerDate": "2020-08-02"
             }, {
-                "IsAtending": false,
+                "IsAttending": false,
                 "Status": "H",
                 "Restriction": "Vegan",
                 "AnswerDate": "2020-08-01"

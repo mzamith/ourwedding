@@ -6,6 +6,7 @@ namespace OurWedding.API.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool CanAddInvitee { get; set; }
         public virtual ICollection<InviteeDto> Invitees { get; set; }
         public virtual InviteAnswerDto InviteAnswer { get; set; }
     }

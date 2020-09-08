@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RecommendationService {
-  baseUrl: string = environment.apiUrl;
+  baseUrl: string = environment.apiUrl + 'recommendations';
   constructor(private http: HttpClient) {}
 
   getRecommendations() {
-    return this.http.get(this.baseUrl + 'recommendations');
+    return this.http.get(this.baseUrl);
   }
 }

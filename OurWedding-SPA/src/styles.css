@@ -19,5 +19,13 @@ h6,
 strong,
 span,
 h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
 }

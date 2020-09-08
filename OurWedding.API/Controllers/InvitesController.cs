@@ -36,7 +36,7 @@ namespace OurWedding.API.Controllers
         public async Task<IActionResult> UpdateInvite(int id, InviteUpdateDto inviteDetails)
         {
             var invite = await _repo.GetInviteDetails(id);
-            _mapper.Map(inviteDetails, invite);
+            invite.fromUpdateDto(inviteDetails, _mapper);
 
             if (await _repo.SaveAll())
                 return NoContent();

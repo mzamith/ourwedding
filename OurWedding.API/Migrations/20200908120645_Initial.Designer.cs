@@ -9,8 +9,8 @@ using OurWedding.API.Data;
 namespace OurWedding.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200905181531_InitialRefactor")]
-    partial class InitialRefactor
+    [Migration("20200908120645_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,9 @@ namespace OurWedding.API.Migrations
 
                     b.Property<string>("AccessKey")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("CanAddInvitee")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -222,6 +225,9 @@ namespace OurWedding.API.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("isNew")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InviteId");
@@ -241,7 +247,7 @@ namespace OurWedding.API.Migrations
                     b.Property<int>("InviteeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsAtending")
+                    b.Property<bool>("IsAttending")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Restriction")

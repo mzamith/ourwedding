@@ -112,6 +112,9 @@ namespace OurWedding.API.Migrations
                     b.Property<string>("AccessKey")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("CanAddInvitee")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
@@ -242,7 +245,7 @@ namespace OurWedding.API.Migrations
                     b.Property<int>("InviteeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsAtending")
+                    b.Property<bool>("IsAttending")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Restriction")

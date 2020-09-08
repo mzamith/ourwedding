@@ -1,5 +1,3 @@
-import { RecommendationService } from './_services/recommendation.service';
-import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -8,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,14 +16,18 @@ import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ParkingComponent } from './parking/parking.component';
 import { RsvpPreviewComponent } from './rsvp-preview/rsvp-preview.component';
+import { RsvpComponent } from './rsvp/rsvp.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertService } from './_services/alert.service';
+import { InviteService } from './_services/invite.service';
+import { RecommendationService } from './_services/recommendation.service';
+import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
+import { InviteResolver } from './_resolvers/invite.resolver';
 
 import { appRoutes } from './routes';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function getToken(): string {
   return localStorage.getItem('token');
@@ -40,6 +43,7 @@ export function getToken(): string {
     ScheduleComponent,
     ParkingComponent,
     RsvpPreviewComponent,
+    RsvpComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,8 @@ export function getToken(): string {
     AlertService,
     RecommendationsResolver,
     RecommendationService,
+    InviteService,
+    InviteResolver,
   ],
   bootstrap: [AppComponent],
 })

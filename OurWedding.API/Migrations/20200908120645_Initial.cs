@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OurWedding.API.Migrations
 {
-    public partial class InitialRefactor : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,8 @@ namespace OurWedding.API.Migrations
                     Name = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     LastActive = table.Column<DateTime>(nullable: false),
-                    IsBlacklisted = table.Column<bool>(nullable: false)
+                    IsBlacklisted = table.Column<bool>(nullable: false),
+                    CanAddInvitee = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,6 +210,7 @@ namespace OurWedding.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     IsMainGuest = table.Column<bool>(nullable: false),
+                    isNew = table.Column<bool>(nullable: false),
                     InviteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -231,7 +233,7 @@ namespace OurWedding.API.Migrations
                     InviteeId = table.Column<int>(nullable: false),
                     Status = table.Column<string>(nullable: true),
                     Restriction = table.Column<string>(nullable: true),
-                    IsAtending = table.Column<bool>(nullable: false),
+                    IsAttending = table.Column<bool>(nullable: false),
                     AnswerDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

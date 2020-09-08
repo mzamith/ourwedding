@@ -54,48 +54,10 @@ namespace OurWedding.API.Helpers
                 .ForMember(dest => dest.AnswerDate, opt => opt.MapFrom(src => DateTime.Now))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => "V"));
 
-            CreateMap<InviteeUpdateDto, Invitee>()
-                .AfterMap((src, dest, context) =>
-                {
-                    dest.InviteeAnswers = new List<InviteeAnswer>();
-                    dest.InviteeAnswers.Add(context.Mapper.Map<InviteeAnswer>(src.InviteeAnswer));
-                });
+            CreateMap<InviteeUpdateDto, Invitee>();
 
-            CreateMap<InviteUpdateDto, Invite>()
-                .AfterMap((src, dest, context) =>
-                {
-                    if (src.InviteAnswer != null)
-                    {
-                        if (!dest.InviteAnswers.IsAny())
-                            dest.InviteAnswers = new List<InviteAnswer>();
-
-                        dest.InviteAnswers.SetStatus("H");
-                        var newInviteAnswer = context.Mapper.Map<InviteAnswer>(src.InviteAnswer);
-                        dest.InviteAnswers.Add(newInviteAnswer);
-                    }
-
-                    if (src.Invitees.IsAny())
-                    {
-                        foreach (var invitee in src.Invitees)
-                        {
-                            if (invitee.isNew)
-                            {
-                                var newInvitee = context.Mapper.Map<Invitee>(invitee);
-                                dest.Invitees.Add(newInvitee);
-                            }
-                            else
-                            {
-                                var inviteeFromRepo = dest.Invitees.FirstOrDefault(i => i.Id == invitee.Id);
-                                if (!inviteeFromRepo.InviteeAnswers.IsAny())
-                                    inviteeFromRepo.InviteeAnswers = new List<InviteeAnswer>();
-                                inviteeFromRepo.InviteeAnswers.SetStatus("H");
-
-                                var newInviteeAnswer = context.Mapper.Map<InviteeAnswer>(invitee.InviteeAnswer);
-                                inviteeFromRepo.InviteeAnswers.Add(newInviteeAnswer);
-                            }
-                        }
-                    }
-                });
+            CreateMap<InviteUpdateDto, Invite>();
         }
     }
+
 }

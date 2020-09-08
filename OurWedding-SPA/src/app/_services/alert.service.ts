@@ -16,27 +16,24 @@ export class AlertService {
     });
   }
 
-  success(header: string, body: string) {
+  success(body_: string) {
     this.toasts.push({
-      header,
-      body,
+      body: body_,
       classname: 'bg-success text-light',
     });
   }
 
-  warning(header: string, body: string) {
+  warning(body: string) {
     this.toasts.push({
-      header,
       body,
       classname: 'bg-warning text-light',
       delay: 15000,
     });
   }
 
-  default(header: string, body: string) {
+  default(body_: string) {
     this.toasts.push({
-      header,
-      body,
+      body: body_,
     });
   }
 

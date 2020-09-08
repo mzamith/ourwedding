@@ -8,7 +8,7 @@ namespace OurWedding.API.Dtos
         public int Id { get; set; }
         public string Status { get; set; }
         public string Restriction { get; set; }
-        public bool IsAtending { get; set; }
+        public bool IsAttending { get; set; }
         public DateTime AnswerDate { get; set; }
 
     }
