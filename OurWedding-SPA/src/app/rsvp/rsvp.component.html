@@ -11,7 +11,7 @@
   <h1>RSVP</h1>
   <h2>Olá {{ simpleInvite.name }}</h2>
 
-  <form>
+  <form #rsvpForm="ngForm">
     <h2 class="text-left text-primary">Confirmação de Presenças</h2>
 
     <div class="form-group text-center">
@@ -51,11 +51,11 @@
 
         <div *ngIf="guest.inviteeAnswer.isAttending && guest.inviteeAnswer.hasRestriction"
           class="col-12 col-sm-12 mt-3">
-          <div class="input-group input-group-sm mb-3">
+          <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
             </div>
-            <input type="text" class="form-control" name="{{ guest.id }}r_text"
+            <input type="text" class="form-control" name="{{ guest.id }}r_text" required
               [(ngModel)]="guest.inviteeAnswer.restriction" />
           </div>
         </div>
@@ -74,9 +74,9 @@
       <hr />
       <div class="row" *ngIf="addedAnInvitee">
         <div class="col-12 col-sm-12">
-          <div class="form-group">
+          <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="form-group">
             <input type="text" class="form-control" id="plusonename" aria-describedby="plusonename" name="plusonename"
-              placeholder="Como se chama?" [(ngModel)]="plusOneInvitee.name">
+              required placeholder="Como se chama?" [(ngModel)]="plusOneInvitee.name">
           </div>
         </div>
 

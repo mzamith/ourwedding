@@ -28,9 +28,9 @@ namespace OurWedding.API.Models
 
             foreach (var invitee in inviteUpdate.Invitees)
             {
-                var repoInvite = Invitees.FirstOrDefault(i => i.Id == invitee.Id);
+                var repoInvitee = Invitees.FirstOrDefault(i => i.Id == invitee.Id);
 
-                if (repoInvite == null)
+                if (repoInvitee == null)
                 {
                     var newInvitee = mapper.Map<Invitee>(invitee);
                     newInvitee.InviteeAnswers = new List<InviteeAnswer>();
@@ -39,8 +39,10 @@ namespace OurWedding.API.Models
                 }
                 else
                 {
-                    repoInvite.InviteeAnswers.SetStatus("H");
-                    repoInvite.InviteeAnswers.Add(mapper.Map<InviteeAnswer>(invitee.InviteeAnswer));
+                    if (invitee.isNew && !invitee.InviteeAnswer.IsAttending)
+                        repoInvitee.WasRemoved = true;
+                    repoInvitee.InviteeAnswers.SetStatus("H");
+                    repoInvitee.InviteeAnswers.Add(mapper.Map<InviteeAnswer>(invitee.InviteeAnswer));
                 }
 
             }

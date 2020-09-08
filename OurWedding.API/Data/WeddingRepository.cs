@@ -26,7 +26,9 @@ namespace OurWedding.API.Data
 
         public async Task<Invite> GetInviteDetails(int id)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var invite = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            invite.Invitees = invite.Invitees.Where(i => !i.WasRemoved).ToList();
+            return invite;
         }
 
         public async Task<ICollection<Recommendation>> GetRecommendations(string category)

@@ -16,9 +16,9 @@ export class AlertService {
     });
   }
 
-  success(body_: string) {
+  success(toastBody: string) {
     this.toasts.push({
-      body: body_,
+      body: toastBody,
       classname: 'bg-success text-light',
     });
   }
@@ -31,9 +31,9 @@ export class AlertService {
     });
   }
 
-  default(body_: string) {
+  default(toastBody: string) {
     this.toasts.push({
-      body: body_,
+      body: toastBody,
     });
   }
 

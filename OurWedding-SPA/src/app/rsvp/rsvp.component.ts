@@ -1,9 +1,10 @@
+import { NgForm } from '@angular/forms';
 import { Invitee } from './../_models/Invite';
 import { AlertService } from './../_services/alert.service';
 import { InviteService } from './../_services/invite.service';
 import { SimpleInvite } from './../_models/SimpleInvite';
 import { AuthService } from './../_services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Invite } from '../_models/Invite';
 
@@ -17,6 +18,8 @@ export class RsvpComponent implements OnInit {
   invite: Invite;
   plusOneInvitee: Invitee;
   addedAnInvitee = false;
+
+  @ViewChild('rsvpForm', { static: true }) rsvpForm: NgForm;
 
   disableMap = {};
 
@@ -43,6 +46,7 @@ export class RsvpComponent implements OnInit {
     });
     this.checkMainGuests(null, null);
     console.log(this.invite);
+    console.log(this.rsvpForm);
   }
 
   logout(): void {
@@ -54,39 +58,42 @@ export class RsvpComponent implements OnInit {
   }
 
   submit() {
-    if (
-      this.invite.invitees.filter((i) => i.isNew && i.inviteeAnswer.isAttending)
-        .length > 0 &&
-      this.addedAnInvitee
-    ) {
-      this.alert.danger('Apenas podes levar um acompanhante.');
-    } else {
-      this.invite.invitees.forEach((i) => {
-        if (!i.inviteeAnswer.hasRestriction) {
-          i.inviteeAnswer.restriction = null;
-        }
-      });
-
-      if (this.invite.canAddInvitee && this.addedAnInvitee) {
-        this.invite.invitees.push(this.plusOneInvitee);
-      }
-
-      this.inviteService.postInvite(this.invite).subscribe(
-        () => {
-          this.simpleInvite.answered = true;
-          this.simpleInvite.lastAnswered = new Date();
-          localStorage.setItem('user', JSON.stringify(this.simpleInvite));
-          if (
-            this.invite.invitees.filter((i) => i.inviteeAnswer.isAttending)
-              .length === 0
-          ) {
-            this.alert.default('Temos pena de não poderes vir :(');
+    if (this.rsvpForm.valid) {
+      if (
+        this.invite.invitees.filter(
+          (i) => i.isNew && i.inviteeAnswer.isAttending
+        ).length > 0 &&
+        this.addedAnInvitee
+      ) {
+        this.alert.danger('Apenas podes levar um acompanhante.');
+      } else {
+        this.invite.invitees.forEach((i) => {
+          if (!i.inviteeAnswer.hasRestriction) {
+            i.inviteeAnswer.restriction = null;
           }
-          this.alert.success('Obrigado pela resposta :)');
-          this.router.navigate(['/home']);
-        },
-        (error) => this.alert.danger(error)
-      );
+        });
+
+        if (this.invite.canAddInvitee && this.addedAnInvitee) {
+          this.invite.invitees.push(this.plusOneInvitee);
+        }
+
+        this.inviteService.postInvite(this.invite).subscribe(
+          () => {
+            this.simpleInvite.answered = true;
+            this.simpleInvite.lastAnswered = new Date();
+            localStorage.setItem('user', JSON.stringify(this.simpleInvite));
+            if (
+              this.invite.invitees.filter((i) => i.inviteeAnswer.isAttending)
+                .length === 0
+            ) {
+              this.alert.default('Temos pena de não poderes vir :(');
+            }
+            this.alert.success('Obrigado pela resposta :)');
+            this.router.navigate(['/home']);
+          },
+          (error) => this.alert.danger(error)
+        );
+      }
     }
   }
 
