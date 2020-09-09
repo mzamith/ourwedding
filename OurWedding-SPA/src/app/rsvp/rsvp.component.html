@@ -65,7 +65,7 @@
       <div class="col-12 col-sm-4 mt-3" *ngIf="invite.canAddInvitee">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="addedInviteeCheckbox" name="addedInviee"
-            [(ngModel)]="addedAnInvitee">
+            [(ngModel)]="addedAnInvitee" [disabled]="plusOneDisabled">
           <label class="form-check-label" for="addedInviteeCheckbox">
             Vou levar um(a) acompanhante
           </label>
@@ -99,7 +99,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
             </div>
-            <input type="text" class="form-control" name="r_text"
+            <input type="text" class="form-control" name="r_text" required
               [(ngModel)]="plusOneInvitee.inviteeAnswer.restriction" />
           </div>
         </div>

@@ -1,4 +1,4 @@
-img {
+.cover-img {
   -webkit-filter: grayscale(100%);
   /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
@@ -6,11 +6,16 @@ img {
 
 p {
   font-size: 2.2vh;
+  color: white
+}
+
+h1 {
+  color: white
 }
 
 .row-container {
   text-align: right;
-  margin-right: 1vw;
+  margin-right: 2vw;
 }
 
 @media(max-width: 599px) {

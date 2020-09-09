@@ -17,6 +17,7 @@ export class RsvpComponent implements OnInit {
   simpleInvite: SimpleInvite;
   invite: Invite;
   plusOneInvitee: Invitee;
+  plusOneDisabled = false;
   addedAnInvitee = false;
 
   @ViewChild('rsvpForm', { static: true }) rsvpForm: NgForm;
@@ -151,10 +152,13 @@ export class RsvpComponent implements OnInit {
         i.inviteeAnswer.isAttending = false;
         this.disableMap[i.id] = !i.isMainGuest;
       });
+      this.addedAnInvitee = false;
+      this.plusOneDisabled = true;
     } else {
       this.invite.invitees.forEach((i) => {
         this.disableMap[i.id] = false;
       });
+      this.plusOneDisabled = false;
     }
   }
 
