@@ -16,6 +16,8 @@ namespace OurWedding.API.Models
         public DateTime LastActive { get; set; }
         public bool IsBlacklisted { get; set; }
         public bool CanAddInvitee { get; set; }
+        public string Team { get; set; }
+        public string WelcomeMessage { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<Invitee> Invitees { get; set; }
         public virtual ICollection<InviteAnswer> InviteAnswers { get; set; }

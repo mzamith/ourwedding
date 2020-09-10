@@ -1,9 +1,28 @@
 [{
-    "Category": "PARKING",
-    "PhotoUrl": "",
-    "Title": "Estacionamento CC São Francisco",
-    "Description": "Fixe",
-    "Address": "Centro Comercial S. Francisco, Alameda de São Dâmaso, 4810-283 Guimarães",
-    "Price": 2,
-    "MapCoordinates": "41.441480, -8.291248"
-}]
+        "Category": "PARKING",
+        "PhotoUrl": "http://mediadipe.ximo.pt/IMOVEIS/4831659/4978.property.4831659.photo.abb94900-0000-0500-0000-0000026121b5.jpg",
+        "Title": "Estacionamento CC São Francisco",
+        "Description": "Fixe",
+        "Address": "Centro Comercial S. Francisco, Alameda de São Dâmaso, 4810-283 Guimarães",
+        "Price": 2,
+        "MapCoordinates": "https://goo.gl/maps/KNUMogcd8EnHwcxp8"
+    },
+    {
+        "Category": "PARKING",
+        "PhotoUrl": "https://www.vitrusambiente.pt/images/banner_condessa_mumadona.png",
+        "Title": "Estacionamento Mumadona",
+        "Description": "Fixe",
+        "Address": "Largo Condessa da Mumadona, 4810-266 Guimarães",
+        "Price": 2,
+        "MapCoordinates": "https://goo.gl/maps/qxuShGuA7qADYWWK6"
+    },
+    {
+        "Category": "PARKING",
+        "PhotoUrl": "https://www.fpguimaraes.pt/wp-content/uploads/2017/02/DSC_5450.jpg",
+        "Title": "Parque Camões",
+        "Description": "Fixe",
+        "Address": "Rua da Caldeirôa, 4810-225 Guimarães (perto do Toural)",
+        "Price": 2,
+        "MapCoordinates": "https://goo.gl/maps/SWbXjMxv4yp7xuR86"
+    }
+]

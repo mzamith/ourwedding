@@ -6,6 +6,7 @@ export interface DetailedInvite {
   inviteAnswers: InviteAnswer[];
   canAddInvitee: boolean;
   isBlacklisted: boolean;
+  team: string;
   lastActive: Date;
 }
 

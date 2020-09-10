@@ -1,1 +1,23 @@
+.custom-switch .custom-control-label::after {
+  background-color: #B68F16 !important;
+}
 
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: green !important;
+  background-color: green !important;
+}
+
+.btn-success {
+  background-color: #B68F16 !important;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    margin-right: 2rem !important;
+    margin-left: 2rem !important;
+  }
+
+}

@@ -52,7 +52,7 @@ export class AdminService {
 
   blacklistInvite(id: number, blacklist: boolean) {
     return this.http.put(
-      this.baseUrl + 'blacklist/' + id + '?' + blacklist,
+      this.baseUrl + 'blacklist/' + id + '?blacklist=' + blacklist,
       {}
     );
   }

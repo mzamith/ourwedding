@@ -1,3 +1,4 @@
+import { DetailedInvitee } from './../_models/DetailedInvite';
 import { AdminService } from './../_services/admin.service';
 import { Invite } from './../_models/Invite';
 import { AlertService } from './../_services/alert.service';
@@ -7,13 +8,13 @@ import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class AdminResolver implements Resolve<Invite[]> {
+export class AdminResolver implements Resolve<DetailedInvitee[]> {
   constructor(
     private adminService: AdminService,
     private alert: AlertService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Invite[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<DetailedInvitee[]> {
     return this.adminService.getInvites().pipe(
       catchError((error) => {
         this.alert.danger(error);

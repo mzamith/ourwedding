@@ -24,8 +24,39 @@
         </ul>
       </div>
     </nav>
+
     <div class="container-fluid">
-      <h1 class="mt-4">Gestão de Convites</h1>
+      <h1 class="mt-4 mb-4">Gestão de Convites</h1>
+      <div class="row">
+        <div class="col-12 col-sm-4 mt-3">
+          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
+            <button type="button" class="btn btn-primary" style="width:120px"
+              (click)="filterInvites('GROOM')">Noivo</button>
+            <button type="button" class="btn" style="background-color:pink;width:120px"
+              (click)="filterInvites('BRIDE')">Noiva</button>
+            <button type="button" class="btn btn-dark" style="width:120px"
+              (click)="filterInvites('RESET')">Todos</button>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 mt-3">
+          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
+            <button type="button" class="btn btn-success" style="width:120px"
+              (click)="filterInvites('ANSWERED')">Respondido</button>
+            <button type="button" class="btn btn-warning" style="width:120px"
+              (click)="filterInvites('PENDING')">Pendente</button>
+            <button type="button" class="btn btn-dark" style="width:120px" (click)="filterInvites('ALL')">Todos</button>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 mt-3">
+          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
+            <button type="button" class="btn btn-success" style="width:120px"
+              (click)="filterInvites('CONFIRMED')">Confirmado</button>
+            <button type="button" class="btn btn-danger" style="width:120px"
+              (click)="filterInvites('DECLINED')">Rejeitado</button>
+            <button type="button" class="btn btn-dark" style="width:120px" (click)="filterInvites('ALL')">Todos</button>
+          </div>
+        </div>
+      </div>
       <div class="accordion mt-5" id="accordionExample">
 
         <div class="card" *ngFor="let invite of invites">
@@ -41,7 +72,8 @@
                 <p
                   [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}">
                   <i class="fa fa-check-circle"></i> {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
-                  <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite) | date}})</span> </p>
+                  <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
+                </p>
               </div>
             </div>
 
@@ -59,12 +91,22 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let guest of invite.invitees">
-                    <th scope="row">{{guest.name}}</th>
+                    <td>{{guest.name}}</td>
                     <td>{{getCurrentAttendence(guest) ? 'Sim' : 'Não'}}</td>
                     <td>{{getCurrentRestriction(guest)}}</td>
                   </tr>
                 </tbody>
               </table>
+              <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
+            </div>
+            <div class="container-fluid mt-5 mb-5">
+              <button type="button" class="btn btn-secondary mr-3" [disabled]="invite.inviteAnswers.length === 0">Ver
+                Histórico</button>
+              <button type="button" class="btn btn-danger mr-3" [disabled]="invite.isBlacklisted"
+                (click)="blacklist(invite.id, true)">Retirar
+                Acesso</button>
+              <button type="button" class="btn btn-info mr-3" [disabled]="!invite.isBlacklisted"
+                (click)="blacklist(invite.id, false)">Repor Acesso</button>
             </div>
           </div>
         </div>

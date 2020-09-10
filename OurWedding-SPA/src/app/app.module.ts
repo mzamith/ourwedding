@@ -18,6 +18,8 @@ import { ParkingComponent } from './parking/parking.component';
 import { RsvpPreviewComponent } from './rsvp-preview/rsvp-preview.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { AdminComponent } from './admin/admin.component';
+import { FooterComponent } from './footer/footer.component';
+import { PersonalMessageComponent } from './personal-message/personal-message.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -48,6 +50,8 @@ export function getToken(): string {
     RsvpPreviewComponent,
     RsvpComponent,
     AdminComponent,
+    FooterComponent,
+    PersonalMessageComponent,
   ],
   imports: [
     BrowserModule,

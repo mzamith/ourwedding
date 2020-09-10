@@ -1,19 +1,21 @@
-<div class="container form-container">
-  <div class="row">
-    <div class="col">
-      <form #loginForm="ngForm" (ngSubmit)="login()">
-        <div class="form-group">
-          <input type="text" class="form-control w-50 ma" id="accessKey" name="key" placeholder="Chave de Acesso"
-            required [(ngModel)]="accessKey.accessKey" />
-          <small id="keyHelp" class="form-text text-muted w-50 ma">Deverás ter uma chave de
-            acesso no teu convite.</small>
-          <div class="container mt-3">
-            <button type="submit" class="btn btn-light w-10" [disabled]="!loginForm.valid">
-              Submeter
-            </button>
+<div class="bck">
+  <div class="container form-container">
+    <div class="row">
+      <div class="col">
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <input type="text" class="form-control w-50 ma" id="accessKey" name="key" placeholder="Chave de Acesso"
+              required [(ngModel)]="accessKey.accessKey" />
+            <small id="keyHelp" class="form-text text-muted w-50 ma">Deverás ter uma chave de
+              acesso no teu convite.</small>
+            <div class="container mt-3">
+              <button type="submit" class="btn btn-light w-10" [disabled]="!loginForm.valid">
+                Submeter
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>

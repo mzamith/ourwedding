@@ -3,17 +3,18 @@ using System.Linq;
 using OurWedding.API.Models;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace OurWedding.API.Data
 {
     public class Seed
     {
-        public static void SeedUsers(UserManager<Invite> userManager, RoleManager<Role> roleManager, DataContext context)
+        public static void SeedUsers(UserManager<Invite> userManager, RoleManager<Role> roleManager, DataContext context, IConfiguration conf)
         {
             if (!userManager.Users.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
-                var invites = JsonConvert.DeserializeObject<List<Invite>>(userData);
+                // var invites = JsonConvert.DeserializeObject<List<Invite>>(userData);
 
                 var roles = new List<Role>
                 {
@@ -26,16 +27,16 @@ namespace OurWedding.API.Data
                     roleManager.CreateAsync(role).Wait();
                 }
 
-                foreach (var invite in invites)
-                {
-                    userManager.CreateAsync(invite, "password").Wait();
-                    userManager.AddToRoleAsync(invite, "Guest").Wait();
-                }
+                // foreach (var invite in invites)
+                // {
+                //     userManager.CreateAsync(invite, "password").Wait();
+                //     userManager.AddToRoleAsync(invite, "Guest").Wait();
+                // }
 
                 var adminUser = new Invite
                 {
                     UserName = "BrideAndGroom",
-                    AccessKey = "adminkey"
+                    AccessKey = conf.GetSection("AppSettings:AdminKey").Value
                 };
 
                 var result = userManager.CreateAsync(adminUser, "password").Result;

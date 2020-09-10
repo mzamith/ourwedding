@@ -7,118 +7,117 @@
   </ul>
 </nav>
 
-<div class="container">
-  <h1>RSVP</h1>
-  <h2>Olá {{ simpleInvite.name }}</h2>
+<div style="background-color: #F7F5F1;" class="pt-5 mb-5">
+  <div class="container">
+    <h1 class="styled-title text-center mb-5">RSVP</h1>
 
-  <form #rsvpForm="ngForm">
-    <h2 class="text-left text-primary">Confirmação de Presenças</h2>
+    <form #rsvpForm="ngForm">
 
-    <div class="form-group text-center">
-      <div *ngFor="let guest of invite.invitees" class="row">
-        <hr />
-        <div class="col-12 col-sm-7">
-          <hr />
-          <p>{{ guest.name }}</p>
-        </div>
-        <div class="col-12 col-sm-5 mb-3" style="text-align: left">
-          <hr />
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="{{ guest.id }}" name="{{ guest.id }}"
-              [(ngModel)]="guest.inviteeAnswer.isAttending" (click)="checkMainGuests($event, guest)"
-              [disabled]="cannotRSVP(guest)" />
-            <label class="custom-control-label" for="{{ guest.id }}">{{
+      <div class="form-group text-center">
+        <div *ngFor="let guest of invite.invitees; let i = index" class="row">
+          <div *ngIf="!guest.isMainGuest && invite.invitees[i-1].isMainGuest" class="col-12 text-left mb-0">
+            <small class=text-muted>Acompanhante(s)</small>
+            <hr class="mt-0" />
+          </div>
+          <div class="col-12 col-sm-7">
+            <p><b>{{ guest.name }}</b></p>
+          </div>
+          <div class="col-12 col-sm-5 mb-3" style="text-align: left">
+            <div class="custom-control custom-switch">
+              <input style="background-color:black !important" type="checkbox" class="custom-control-input"
+                id="{{ guest.id }}" name="{{ guest.id }}" [(ngModel)]="guest.inviteeAnswer.isAttending"
+                (click)="checkMainGuests($event, guest)" [disabled]="cannotRSVP(guest)" />
+              <label class="custom-control-label" for="{{ guest.id }}">{{
               guest.inviteeAnswer.isAttending
                 ? "Vou estar presente"
                 : "Não vou estar presente"
             }}</label>
+            </div>
+          </div>
+
+          <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-7">
+            <small>Tens alguma restrição alimentar?</small>
+          </div>
+
+          <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-5" style="text-align: left">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="{{ guest.id }}rest" name="{{ guest.id }}rest"
+                [(ngModel)]="guest.inviteeAnswer.hasRestriction" />
+              <label class="custom-control-label" for="{{ guest.id }}rest">
+                {{ guest.inviteeAnswer.hasRestriction ? "Sim" : "Não" }}
+              </label>
+            </div>
+          </div>
+
+          <div *ngIf="guest.inviteeAnswer.isAttending && guest.inviteeAnswer.hasRestriction"
+            class="col-12 col-sm-12 mt-3">
+            <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
+              </div>
+              <input type="text" class="form-control" name="{{ guest.id }}r_text" required
+                [(ngModel)]="guest.inviteeAnswer.restriction" />
+            </div>
           </div>
         </div>
 
-        <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-7">
-          <small>Tens alguma restrição alimentar?</small>
-        </div>
-
-        <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-5" style="text-align: left">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="{{ guest.id }}rest" name="{{ guest.id }}rest"
-              [(ngModel)]="guest.inviteeAnswer.hasRestriction" />
-            <label class="custom-control-label" for="{{ guest.id }}rest">
-              {{ guest.inviteeAnswer.hasRestriction ? "Sim" : "Não" }}
+        <div class="col-12 col-sm-4 mt-3" *ngIf="invite.canAddInvitee">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="addedInviteeCheckbox" name="addedInviee"
+              [(ngModel)]="addedAnInvitee" [disabled]="plusOneDisabled">
+            <label class="form-check-label" for="addedInviteeCheckbox">
+              Vou levar um(a) acompanhante
             </label>
           </div>
         </div>
-
-        <div *ngIf="guest.inviteeAnswer.isAttending && guest.inviteeAnswer.hasRestriction"
-          class="col-12 col-sm-12 mt-3">
-          <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
+        <div class="row" *ngIf="addedAnInvitee">
+          <div class="col-12 col-sm-12">
+            <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="form-group">
+              <input type="text" class="form-control" id="plusonename" aria-describedby="plusonename" name="plusonename"
+                required placeholder="Como se chama?" [(ngModel)]="plusOneInvitee.name">
             </div>
-            <input type="text" class="form-control" name="{{ guest.id }}r_text" required
-              [(ngModel)]="guest.inviteeAnswer.restriction" />
           </div>
+
+          <div class="col-12 col-sm-7">
+            <small>Tens alguma restrição alimentar?</small>
+          </div>
+
+          <div class="col-12 col-sm-5" style="text-align: left">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="rest" name="rest"
+                [(ngModel)]="plusOneInvitee.inviteeAnswer.hasRestriction" />
+              <label class="custom-control-label" for="rest">
+                {{ plusOneInvitee.inviteeAnswer.hasRestriction ? "Sim" : "Não" }}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 mt-3" *ngIf="plusOneInvitee.inviteeAnswer.hasRestriction">
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
+              </div>
+              <input type="text" class="form-control" name="r_text" required
+                [(ngModel)]="plusOneInvitee.inviteeAnswer.restriction" />
+            </div>
+          </div>
+
         </div>
+        <div class="form-group mt-5">
+          <label for="exampleFormControlTextarea1">Deixa-nos um comentário :)</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="invitecomment"
+            [(ngModel)]="invite.inviteAnswer.comment"></textarea>
+        </div>
+
+
         <hr />
+        <button class="btn btn-success" (click)="submit()" type="submit">
+          RSVP
+        </button>
+        <button class="btn btn-default" [routerLink]="['/home']" type="button">
+          Cancelar
+        </button>
       </div>
-
-      <div class="col-12 col-sm-4 mt-3" *ngIf="invite.canAddInvitee">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="addedInviteeCheckbox" name="addedInviee"
-            [(ngModel)]="addedAnInvitee" [disabled]="plusOneDisabled">
-          <label class="form-check-label" for="addedInviteeCheckbox">
-            Vou levar um(a) acompanhante
-          </label>
-        </div>
-      </div>
-      <hr />
-      <div class="row" *ngIf="addedAnInvitee">
-        <div class="col-12 col-sm-12">
-          <div [ngClass]="{'was-validated': rsvpForm.submitted}" class="form-group">
-            <input type="text" class="form-control" id="plusonename" aria-describedby="plusonename" name="plusonename"
-              required placeholder="Como se chama?" [(ngModel)]="plusOneInvitee.name">
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-7">
-          <small>Tens alguma restrição alimentar?</small>
-        </div>
-
-        <div class="col-12 col-sm-5" style="text-align: left">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="rest" name="rest"
-              [(ngModel)]="plusOneInvitee.inviteeAnswer.hasRestriction" />
-            <label class="custom-control-label" for="rest">
-              {{ plusOneInvitee.inviteeAnswer.hasRestriction ? "Sim" : "Não" }}
-            </label>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-12 mt-3" *ngIf="plusOneInvitee.inviteeAnswer.hasRestriction">
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Qual?</span>
-            </div>
-            <input type="text" class="form-control" name="r_text" required
-              [(ngModel)]="plusOneInvitee.inviteeAnswer.restriction" />
-          </div>
-        </div>
-
-      </div>
-      <div class="form-group mt-5">
-        <label for="exampleFormControlTextarea1">Deixa-nos um comentário :)</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="invitecomment"
-          [(ngModel)]="invite.inviteAnswer.comment"></textarea>
-      </div>
-
-
-      <hr />
-      <button class="btn btn-success" (click)="submit()" type="submit">
-        RSVP
-      </button>
-      <button class="btn btn-default" [routerLink]="['/home']" type="button">
-        Cancelar
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

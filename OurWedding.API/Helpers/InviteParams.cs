@@ -2,9 +2,9 @@ namespace OurWedding.API.Helpers
 {
     public class InviteParams
     {
-        private const int MaxPageSize = 50;
+        private const int MaxPageSize = 300;
         public int PageNumber { get; set; } = 1;
-        private int pageSize = 10;
+        private int pageSize = 200;
         public int PageSize
         {
             get { return pageSize; }

@@ -5,6 +5,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #F7F5F1;
 }
 
 p,
@@ -20,6 +21,12 @@ strong,
 span,
 h3 {
   font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+}
+
+button {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 100;
 }
 
 .styled-title {
@@ -33,6 +40,10 @@ h3 {
 
 }
 
+.fancy-header {
+  font-family: 'Monsieur La Doulaise', cursive;
+  color: #B68F16 !important;
+}
 
 .nav-link {
   cursor: pointer;

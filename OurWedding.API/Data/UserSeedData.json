@@ -1,60 +1,69 @@
 [{
-        "UserName": "FamilyOne",
-        "AccessKey": "randomaccesskey1",
-        "Name": "Family One",
+        "UserName": "Papa",
+        "AccessKey": "papakey",
+        "Name": "Papá",
         "Password": "password",
         "Created": "2017-08-02",
-        "LastActive": "2017-08-02",
+        "LastActive": "2020-08-02",
+        "Team": "GROOM",
+        "WelcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis sem lacus, et tristique ex aliquet ut. Vivamus magna quam, ultrices ut luctus quis, cursus nec ligula. Morbi tincidunt enim eu justo scelerisque rutrum. Donec sollicitudin, ex at vulputate consequat, ante augue pellentesque quam, sed auctor nunc velit et ipsum. Vivamus suscipit est ut metus commodo elementum. Morbi aliquam tempor gravida. Maecenas id leo a magna suscipit consequat vitae eget lorem.",
+        "CanAddInvitee": false,
         "Invitees": [{
-            "Name": "Guest 11",
-            "IsMainGuest": true,
-            "InviteeAnswers": [{
-                "IsAttending": true,
-                "Status": "V",
-                "AnswerDate": "2020-08-02"
-            }, {
-                "IsAttending": true,
-                "Status": "H",
-                "AnswerDate": "2020-08-01"
-            }]
-        }, {
-            "Name": "Guest 12",
-            "IsMainGuest": true,
-            "InviteeAnswers": [{
-                "IsAttending": true,
-                "Status": "V",
-                "Restriction": "Vegan",
-                "AnswerDate": "2020-08-02"
-            }, {
-                "IsAttending": false,
-                "Status": "H",
-                "Restriction": "Vegan",
-                "AnswerDate": "2020-08-01"
-            }]
-        }],
-        "InviteAnswers": [{
-            "Comment": "Answer Comment 1",
-            "AnswerDate": "2020-08-02",
-            "Status": "H"
-        }, {
-            "Comment": "Answer Comment 2",
-            "AnswerDate": "2020-08-03",
-            "Status": "V"
+            "Name": "Papá",
+            "IsMainGuest": true
         }]
     },
     {
-        "UserName": "FamilyTwo",
-        "AccessKey": "randomaccesskey2",
-        "Name": "Family Two",
+        "UserName": "Joao",
+        "AccessKey": "joaokey",
+        "Name": "João",
         "Password": "password",
         "Created": "2017-08-02",
         "LastActive": "2017-08-02",
+        "Team": "GROOM",
+        "WelcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis sem lacus, et tristique ex aliquet ut. Vivamus magna quam, ultrices ut luctus quis, cursus nec ligula. Morbi tincidunt enim eu justo scelerisque rutrum. Donec sollicitudin, ex at vulputate consequat, ante augue pellentesque quam, sed auctor nunc velit et ipsum. Vivamus suscipit est ut metus commodo elementum. Morbi aliquam tempor gravida. Maecenas id leo a magna suscipit consequat vitae eget lorem.",
         "Invitees": [{
-            "Name": "Guest 21",
-            "IsMainGuest": false
-        }, {
-            "Name": "Guest 22",
+            "Name": "João",
             "IsMainGuest": true
+        }, {
+            "Name": "Mónica",
+            "IsMainGuest": false
+        }]
+    },
+    {
+        "UserName": "Joaozinho",
+        "AccessKey": "joaozinhokey",
+        "Name": "Joãozinho",
+        "Password": "password",
+        "Created": "2017-08-02",
+        "LastActive": "2017-08-02",
+        "Team": "GROOM",
+        "WelcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis sem lacus, et tristique ex aliquet ut. Vivamus magna quam, ultrices ut luctus quis, cursus nec ligula. Morbi tincidunt enim eu justo scelerisque rutrum. Donec sollicitudin, ex at vulputate consequat, ante augue pellentesque quam, sed auctor nunc velit et ipsum. Vivamus suscipit est ut metus commodo elementum. Morbi aliquam tempor gravida. Maecenas id leo a magna suscipit consequat vitae eget lorem.",
+        "CanAddInvitee": true,
+        "Invitees": [{
+            "Name": "Joãozinho",
+            "IsMainGuest": true
+        }, {
+            "Name": "Rita Gonzalez",
+            "IsMainGuest": false
+        }]
+    },
+    {
+        "UserName": "Carolina",
+        "AccessKey": "carolinakey",
+        "Name": "Carolina",
+        "Password": "password",
+        "Created": "2017-08-02",
+        "LastActive": "2017-08-02",
+        "Team": "BRIDE",
+        "CanAddInvitee": true,
+        "WelcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis sem lacus, et tristique ex aliquet ut. Vivamus magna quam, ultrices ut luctus quis, cursus nec ligula. Morbi tincidunt enim eu justo scelerisque rutrum. Donec sollicitudin, ex at vulputate consequat, ante augue pellentesque quam, sed auctor nunc velit et ipsum. Vivamus suscipit est ut metus commodo elementum. Morbi aliquam tempor gravida. Maecenas id leo a magna suscipit consequat vitae eget lorem.",
+        "Invitees": [{
+            "Name": "Carolina",
+            "IsMainGuest": true
+        }, {
+            "Name": "Someone",
+            "IsMainGuest": false
         }]
     }
 ]

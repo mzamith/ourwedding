@@ -1,15 +1,12 @@
-<div class="container" style="text-align: center;">
+<div class="container mb-5" style="text-align: center;">
   <h1 class="mb-4 styled-title">Estacionamento</h1>
   <div class="row align-items-center">
-
-    <div class="col-sm-4 col-12">
-      <div *ngFor=" let recom of recommendations" class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4">
-        <div class="card-img-wrapper mb-2">
-          <img class="card-img-top"
-            src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6ImlmeWc1Z3B0MHVscTEtRUNPU1lTVEVNIiwidyI6W3siZm4iOiI0amFmcGw5aDNmZ3QtQVBUIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.kDgHkJVpIpA5YZbfsWmZ0YxYRoEu7Y1aNJDi3BDZt-U/image;s=1280x1024;q=80"
-            alt="">
+    <div *ngFor=" let recom of recommendations" class="col-sm-4 col-12">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 60vh">
+        <div class="card-img-wrapper mb-2" style="height: 60%">
+          <img class="card-img-top" src="{{recom.photoUrl}}" alt="" style="object-fit: cover;height: 100%;">
         </div>
-        <div class="card-body p-1">
+        <div class="card-body p-1" style="height: 40%">
           <h6 classs="card-title text-center mb-1 mt-2">{{recom.title}}</h6>
           <p class="card-text text-muted text-center">{{recom.address}}</p>
           <div class="row align-items-center mb-3">

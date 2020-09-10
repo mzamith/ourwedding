@@ -1,11 +1,23 @@
 .form-container {
-  margin-top: 200px;
+  margin-top: 40vh;
+  height: 100%;
 }
 
 .form-group {
   text-align: center;
+  height: 100%;
 }
 
 .ma {
   margin: auto;
+}
+
+.bck {
+  width: 100%;
+  height: 100vh;
+  display: table;
+  margin-bottom: 0;
+  background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/o_31,q_100/v1599607547/IMG_3415_jmyy8v.jpg");
+  background-size: cover;
+  background-position: center;
 }

@@ -30,13 +30,17 @@
   <app-jumbotron></app-jumbotron>
 </div>
 <div style="background-color: #F7F5F1;">
+  <div #personal>
+    <app-personal-message></app-personal-message>
+  </div>
   <div #schedule style="background-color: #000000;">
     <app-schedule></app-schedule>
   </div>
-  <div #parking style="background-color: #F7F5F1;">
+  <div #parking>
     <app-parking [recommendations]="recommendations"></app-parking>
   </div>
   <div #rsvp>
     <app-rsvp-preview></app-rsvp-preview>
   </div>
+  <app-footer></app-footer>
 </div>

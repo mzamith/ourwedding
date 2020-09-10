@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace OurWedding.API
 {
@@ -23,8 +24,9 @@ namespace OurWedding.API
                     var context = services.GetRequiredService<DataContext>();
                     var userManager = services.GetRequiredService<UserManager<Invite>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
+                    var config = services.GetRequiredService<IConfiguration>();
                     context.Database.Migrate();
-                    Seed.SeedUsers(userManager, roleManager, context);
+                    Seed.SeedUsers(userManager, roleManager, context, config);
                 }
                 catch (Exception ex)
                 {

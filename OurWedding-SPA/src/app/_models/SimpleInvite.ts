@@ -4,4 +4,6 @@ export interface SimpleInvite {
   name: string;
   answered: boolean;
   lastAnswered: Date;
+  welcomeMessage: string;
+  team: string;
 }

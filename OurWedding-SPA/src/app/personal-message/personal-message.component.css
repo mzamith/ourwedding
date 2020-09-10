@@ -1,0 +1,27 @@
+.message-container {
+  min-height: 80vh;
+  position: relative;
+}
+
+.message-container-child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+p,
+h1 {
+  vertical-align: middle;
+  margin: 0;
+  display: table-cell;
+}
+
+@media (max-width: 768px) {
+
+  .message-container-child {
+    margin-right: 2rem !important;
+    margin-left: 2rem !important;
+  }
+}
