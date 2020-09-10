@@ -5,6 +5,7 @@ import { DetailedInvite, DetailedInvitee } from './../_models/DetailedInvite';
 import { Pagination } from './../_models/pagination';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AdminComponent implements OnInit {
   invites: DetailedInvite[];
   invitesMemory: DetailedInvite[];
+  selectedInvite: DetailedInvite;
   pagination: Pagination;
   toggled = false;
   constructor(
@@ -21,7 +23,8 @@ export class AdminComponent implements OnInit {
     private adminService: AdminService,
     private alert: AlertService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -104,5 +107,9 @@ export class AdminComponent implements OnInit {
     } else {
       this.invites = this.invitesMemory;
     }
+  }
+  openScrollableContent(longContent, invite: DetailedInvite) {
+    this.selectedInvite = invite;
+    this.modalService.open(longContent, { scrollable: true, size: 'lg' });
   }
 }

@@ -3,9 +3,9 @@
   float: none;
   margin-bottom: 10px;
   box-shadow: 2px 5px 9px #888888;
+  height: 70vh;
 }
 
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
+p {
+  font-size: 2vh;
 }

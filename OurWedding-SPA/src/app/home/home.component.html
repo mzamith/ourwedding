@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Olá {{invite.name}}!</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-eggshell">
+  <a class="navbar-brand pr-3"><b>{{invite.name}}</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item">
+        <a class="nav-link" (click)="scroll(personal)">Mensagem</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" (click)="scroll(schedule)">Agenda</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="scroll(parking)">Estacionamento</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="scroll(schedule)">Alojamento</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="scroll(rsvp)">RSVP</a>
@@ -21,19 +21,19 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item float-right">
-        <a class="nav-link" (click)="logout()">Logout</a>
+        <a class="nav-link" (click)="logout()">Sair</a>
       </li>
     </ul>
   </div>
 </nav>
 <div #jumbotron>
-  <app-jumbotron></app-jumbotron>
+  <app-jumbotron [welcomeMessage]="personal"></app-jumbotron>
 </div>
-<div style="background-color: #F7F5F1;">
+<div class="bg-eggshell">
   <div #personal>
     <app-personal-message></app-personal-message>
   </div>
-  <div #schedule style="background-color: #000000;">
+  <div #schedule class="bg-maroon">
     <app-schedule></app-schedule>
   </div>
   <div #parking>

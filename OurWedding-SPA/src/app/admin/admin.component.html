@@ -1,3 +1,41 @@
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Histórico de Respostas</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2 class="text-center">{{selectedInvite.name}}</h2>
+    <div *ngFor="let answer of selectedInvite.inviteAnswers; let i = index;" class="container">
+      <p><b>Data:</b> {{answer.answerDate | date:'short'}}</p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Presença</th>
+            <th scope="col">Restrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let guest of selectedInvite.invitees">
+            <td>{{guest.name}}</td>
+            <td>{{guest.inviteeAnswers[i].isAttending ? 'Sim' : 'Não'}}</td>
+            <td>{{guest.inviteeAnswers[i].restriction}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><b>Comentário:</b> {{answer.comment}}</p>
+      <hr />
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
 <div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled}">
   <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
@@ -5,6 +43,7 @@
     <div class="list-group list-group-flush">
       <a href="#" class="list-group-item list-group-item-action bg-light">Convites</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Recomendações</a>
+
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -30,30 +69,27 @@
       <div class="row">
         <div class="col-12 col-sm-4 mt-3">
           <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary" style="width:120px"
-              (click)="filterInvites('GROOM')">Noivo</button>
-            <button type="button" class="btn" style="background-color:pink;width:120px"
-              (click)="filterInvites('BRIDE')">Noiva</button>
-            <button type="button" class="btn btn-dark" style="width:120px"
-              (click)="filterInvites('RESET')">Todos</button>
+            <button type="button" class="btn btn-primary filter-button" (click)="filterInvites('GROOM')">Noivo</button>
+            <button type="button" class="btn filter-button btn-pink" (click)="filterInvites('BRIDE')">Noiva</button>
+            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('RESET')">Todos</button>
           </div>
         </div>
         <div class="col-12 col-sm-4 mt-3">
           <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-success" style="width:120px"
+            <button type="button" class="btn btn-success filter-button"
               (click)="filterInvites('ANSWERED')">Respondido</button>
-            <button type="button" class="btn btn-warning" style="width:120px"
+            <button type="button" class="btn btn-warning filter-button"
               (click)="filterInvites('PENDING')">Pendente</button>
-            <button type="button" class="btn btn-dark" style="width:120px" (click)="filterInvites('ALL')">Todos</button>
+            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('ALL')">Todos</button>
           </div>
         </div>
         <div class="col-12 col-sm-4 mt-3">
           <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-success" style="width:120px"
+            <button type="button" class="btn btn-success filter-button"
               (click)="filterInvites('CONFIRMED')">Confirmado</button>
-            <button type="button" class="btn btn-danger" style="width:120px"
+            <button type="button" class="btn btn-danger filter-button"
               (click)="filterInvites('DECLINED')">Rejeitado</button>
-            <button type="button" class="btn btn-dark" style="width:120px" (click)="filterInvites('ALL')">Todos</button>
+            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('ALL')">Todos</button>
           </div>
         </div>
       </div>
@@ -100,12 +136,13 @@
               <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
             </div>
             <div class="container-fluid mt-5 mb-5">
-              <button type="button" class="btn btn-secondary mr-3" [disabled]="invite.inviteAnswers.length === 0">Ver
+              <button type="button" class="btn btn-secondary mr-3" [disabled]="invite.inviteAnswers.length === 0"
+                (click)="openScrollableContent(longContent, invite)">Ver
                 Histórico</button>
               <button type="button" class="btn btn-danger mr-3" [disabled]="invite.isBlacklisted"
                 (click)="blacklist(invite.id, true)">Retirar
                 Acesso</button>
-              <button type="button" class="btn btn-info mr-3" [disabled]="!invite.isBlacklisted"
+              <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
                 (click)="blacklist(invite.id, false)">Repor Acesso</button>
             </div>
           </div>

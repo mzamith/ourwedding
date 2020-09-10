@@ -1,16 +1,16 @@
-<div class="container mb-5" style="text-align: center;">
+<div class="container mb-5 text-center">
   <h1 class="mb-4 styled-title">Estacionamento</h1>
   <div class="row align-items-center">
     <div *ngFor=" let recom of recommendations" class="col-sm-4 col-12">
-      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 60vh">
-        <div class="card-img-wrapper mb-2" style="height: 60%">
-          <img class="card-img-top" src="{{recom.photoUrl}}" alt="" style="object-fit: cover;height: 100%;">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4">
+        <div class="card-img-wrapper mb-2">
+          <img class="card-img-top" src="{{recom.photoUrl}}" alt="">
         </div>
-        <div class="card-body p-1" style="height: 40%">
+        <div class="card-body p-1">
           <h6 classs="card-title text-center mb-1 mt-2">{{recom.title}}</h6>
           <p class="card-text text-muted text-center">{{recom.address}}</p>
-          <div class="row align-items-center mb-3">
-            <div class="col-6">
+          <div class="row align-items-center mb-3 footer-row">
+            <div class="col-6 text-center ma">
               <strong>Preço: </strong><strong>{{recom.price | currency:'EUR'}}</strong>
             </div>
             <div class="col-6">

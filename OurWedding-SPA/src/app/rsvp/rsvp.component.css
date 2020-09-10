@@ -5,8 +5,8 @@
 
 .custom-control-input:checked~.custom-control-label::before {
   color: #fff;
-  border-color: green !important;
-  background-color: green !important;
+  border-color: #440402 !important;
+  background-color: #440402 !important;
 }
 
 .btn-success {

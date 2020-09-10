@@ -1,20 +1,19 @@
-<div class="container" style="text-align: center;">
+<div class="container mb-5 text-center bg-eggshell">
   <h1 class="mb-4 styled-title">RSVP</h1>
   <div class="row">
-
     <div class="col-sm-3 col-0"></div>
     <div *ngIf="!invite.answered" class="col-sm-6 col-12 h-100">
-      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 70vh;">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4">
         <div class="card-img-wrapper mb-2 mt-5">
           <img width="50px" class=""
             src="https://res.cloudinary.com/dp8csoo5l/image/upload/v1599662288/email_kmoytp.png" />
         </div>
-        <div class="card-body p-1 m-2" style="display:inline-block">
+        <div class="card-body p-1 m-2">
           <h6 classs="card-title text-center mb-5">{{invite.name}}:</h6>
-          <p class="card-text text-muted text-center mt-5">Temos todo o gosto em receber-vos no nosso dia...</p>
-          <p class="card-text text-muted text-center mt-3">Para facilitar o nosso trabalho, por favor responde o mais
+          <p class="card-text text-center mt-5">Temos todo o gosto em receber-vos no nosso dia...</p>
+          <p class="card-text text-center mt-3">Para facilitar o nosso trabalho, por favor responde o mais
             cedo possível!</p> <span></span>
-          <small>Agradecemos uma resposta final antes do dia 10/10/2021</small>
+          <small class="text-muted">Agradecemos uma resposta final antes do dia 01/05/2021</small>
           <div class="row" class="align-items-center mb-3">
             <a class="btn btn-light text-center mt-5" [routerLink]="['/rsvp']"><i
                 class="fa fa-reply mr-2"></i>Responder</a>
@@ -25,18 +24,18 @@
 
 
     <div *ngIf="invite.answered" class="col-sm-6 col-12 h-100">
-      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4" style="height: 70vh;">
+      <div class="card mb-4 mr-sm-0 mr-4 ml-sm-0 ml-4">
         <div class="card-img-wrapper mb-2 mt-5">
           <img width="50px" class=""
             src="https://res.cloudinary.com/dp8csoo5l/image/upload/v1599687328/letter_qczrny.png" />
         </div>
         <div class="card-body p-1 m-2">
           <h6 classs="card-title text-center mb-5">{{invite.name}}:</h6>
-          <p class="card-text text-muted text-center mt-5">Já deste uma resposta no dia
+          <p class="card-text text-center mt-5">Já deste uma resposta no dia
             {{invite.lastAnswered | date:'shortDate'}}
           </p>
-          <p class="card-text text-muted text-center mt-3">Podes sempre alterar a tua resposta!</p>
-          <small>Agradecemos uma resposta final antes do dia 10/10/2021</small>
+          <p class="card-text text-center mt-3">Podes sempre alterar a tua resposta!</p>
+          <small class="text-muted">Agradecemos uma resposta final antes do dia 01/05/2021</small>
           <div class="row" class="align-items-center mb-3">
             <a class="btn btn-light text-center mt-5" [routerLink]="['/rsvp']"><i class="fa fa-edit mr-2"></i>Editar</a>
           </div>

@@ -4,16 +4,28 @@
   display: table;
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 0;
-  background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/v1599608309/DSC_3202_wlpb7b.jpg");
+  background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/v1599757563/IMG_4942_Fotor_tg1ipi.jpg");
   background-size: cover;
   background-position: center;
-
 }
 
 .jumbotron .container {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+
+}
+
+.jumbotron-title {
+  font-size: 100px;
+}
+
+.jumbotron-subtitle {
+  font-family: 'Cookie', 'sans-serif';
+}
+
+a {
+  cursor: pointer;
 }
 
 /* .bg-image {

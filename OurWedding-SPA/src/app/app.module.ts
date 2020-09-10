@@ -1,3 +1,4 @@
+import { HistoryModalComponent } from './admin/history-modal/history-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbToastModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +53,7 @@ export function getToken(): string {
     AdminComponent,
     FooterComponent,
     PersonalMessageComponent,
+    HistoryModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ export function getToken(): string {
       },
     }),
     NgbToastModule,
+    NgbModalModule,
   ],
   providers: [
     AuthService,

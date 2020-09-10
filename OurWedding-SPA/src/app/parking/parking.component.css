@@ -3,6 +3,7 @@
   float: none;
   margin-bottom: 10px;
   box-shadow: 2px 5px 9px #888888;
+  height: 65vh;
 }
 
 .card:hover img {
@@ -16,11 +17,21 @@
   transform: scale(1.0, 1.0);
   transition-duration: 500ms;
   transition-timing-function: ease-out;
+  object-fit: cover;
+  height: 100%;
+}
+
+.footer-row {
+  float: bottom;
+  bottom: 0;
+  position: absolute;
+  width: 100%
 }
 
 .card-img-wrapper {
   overflow: hidden;
   position: relative;
+  height: 60%;
 }
 
 .member-icons {

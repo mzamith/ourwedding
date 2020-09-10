@@ -42,3 +42,11 @@ body {
     margin-left: -15rem;
   }
 }
+
+.filter-button {
+  width: 120px;
+}
+
+.btn-pink {
+  background-color: pink;
+}
