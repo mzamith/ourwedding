@@ -4,9 +4,9 @@
   display: table;
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 0;
-  background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/v1599757563/IMG_4942_Fotor_tg1ipi.jpg");
+  background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/v1599757581/IMG_3517_Fotor_i57lnj.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
 }
 
 .jumbotron .container {
@@ -18,6 +18,9 @@
 
 .jumbotron-title {
   font-size: 100px;
+  font-family: "Mr Dafoe", sans-serif;
+  /* font-family: "Monsieur La Doulaise", sans-serif; */
+
 }
 
 .jumbotron-subtitle {

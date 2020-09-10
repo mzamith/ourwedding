@@ -4,16 +4,6 @@
   filter: grayscale(100%);
 }
 
-.message-container {
-  min-height: 80vh;
-  position: relative;
-}
-
-.message-container-child {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 p {
   font-size: 2vh;

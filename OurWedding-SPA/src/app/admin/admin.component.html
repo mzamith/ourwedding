@@ -7,7 +7,7 @@
   </div>
   <div class="modal-body">
     <h2 class="text-center">{{selectedInvite.name}}</h2>
-    <div *ngFor="let answer of selectedInvite.inviteAnswers; let i = index;" class="container">
+    <div *ngFor="let answer of sortedAnswers(selectedInvite); let i = index;" class="container">
       <p><b>Data:</b> {{answer.answerDate | date:'short'}}</p>
       <table class="table table-borderless">
         <thead>
@@ -20,8 +20,8 @@
         <tbody>
           <tr *ngFor="let guest of selectedInvite.invitees">
             <td>{{guest.name}}</td>
-            <td>{{guest.inviteeAnswers[i].isAttending ? 'Sim' : 'Não'}}</td>
-            <td>{{guest.inviteeAnswers[i].restriction}}</td>
+            <td>{{sortedInviteeAnswers(guest)[i].isAttending ? 'Sim' : 'Não'}}</td>
+            <td>{{sortedInviteeAnswers(guest)[i].restriction}}</td>
           </tr>
         </tbody>
       </table>

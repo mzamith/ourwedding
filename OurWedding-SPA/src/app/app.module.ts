@@ -1,4 +1,3 @@
-import { HistoryModalComponent } from './admin/history-modal/history-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -53,7 +52,6 @@ export function getToken(): string {
     AdminComponent,
     FooterComponent,
     PersonalMessageComponent,
-    HistoryModalComponent,
   ],
   imports: [
     BrowserModule,

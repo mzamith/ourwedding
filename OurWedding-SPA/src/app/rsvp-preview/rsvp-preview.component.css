@@ -1,11 +1,53 @@
 .card {
-  margin: auto;
-  float: none;
-  margin-bottom: 10px;
   box-shadow: 2px 5px 9px #888888;
   height: 70vh;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 90%
 }
 
 p {
   font-size: 2vh;
+}
+
+@media (max-width: 567px) {
+  .card {
+    height: 90vh;
+  }
+
+  .row-container,
+  .row {
+    height: 100vh !important;
+  }
+}
+
+.row-container {
+  text-align: right;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* .cover-img {
+  float: right;
+  object-fit: cover;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+} */
+
+.cover-img {
+  background-image: url("https://images.adsttc.com/media/images/5629/8b81/e58e/ce22/ae00/007c/large_jpg/003_280.jpg?1445563242");
+  background-size: cover;
+  background-position: bottom;
+}
+
+
+
+.card-parent {
+  text-align: center;
+  position: relative;
+  width: 100%
 }

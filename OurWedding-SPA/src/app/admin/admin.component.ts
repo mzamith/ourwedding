@@ -112,4 +112,20 @@ export class AdminComponent implements OnInit {
     this.selectedInvite = invite;
     this.modalService.open(longContent, { scrollable: true, size: 'lg' });
   }
+
+  sortedAnswers(invite: DetailedInvite) {
+    return invite.inviteAnswers.sort((ia1, ia2) => {
+      return (
+        new Date(ia2.answerDate).getTime() - new Date(ia1.answerDate).getTime()
+      );
+    });
+  }
+
+  sortedInviteeAnswers(invitee: DetailedInvitee) {
+    return invitee.inviteeAnswers.sort((ia1, ia2) => {
+      return (
+        new Date(ia2.answerDate).getTime() - new Date(ia1.answerDate).getTime()
+      );
+    });
+  }
 }

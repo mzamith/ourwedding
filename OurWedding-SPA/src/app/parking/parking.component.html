@@ -7,14 +7,14 @@
           <img class="card-img-top" src="{{recom.photoUrl}}" alt="">
         </div>
         <div class="card-body p-1">
-          <h6 classs="card-title text-center mb-1 mt-2">{{recom.title}}</h6>
+          <h6 class="card-title text-center mb-1 mt-2">{{recom.title}}</h6>
           <p class="card-text text-muted text-center">{{recom.address}}</p>
           <div class="row align-items-center mb-3 footer-row">
             <div class="col-6 text-center ma">
               <strong>Preço: </strong><strong>{{recom.price | currency:'EUR'}}</strong>
             </div>
             <div class="col-6">
-              <a class="btn btn-light text-center" target="_blank" rel="noopener noreferrer"
+              <a class="btn btn-light text-center bg-maroon text-white" target="_blank" rel="noopener noreferrer"
                 href="{{recom.mapCoordinates}}"><i class="fa fa-map-marker mr-2"></i>Mapa</a>
             </div>
           </div>

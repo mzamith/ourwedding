@@ -62,7 +62,7 @@ export class RsvpComponent implements OnInit {
     if (this.rsvpForm.valid) {
       if (
         this.invite.invitees.filter(
-          (i) => i.isNew && i.inviteeAnswer.isAttending
+          (i) => !i.isMainGuest && i.inviteeAnswer.isAttending
         ).length > 0 &&
         this.addedAnInvitee
       ) {

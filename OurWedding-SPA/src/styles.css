@@ -5,7 +5,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #F0EAD6;
+  background-color: #F7F5F1;
 }
 
 p,
@@ -55,15 +55,15 @@ textarea {
 }
 
 .bg-eggshell {
-  background-color: #F0EAD6 !important;
+  background-color: #F7F5F1 !important;
 }
 
 .text-eggshell {
-  color: #F0EAD6 !important;
+  color: #F7F5F1 !important;
 }
 
 .bg-maroon {
-  background-color: #440402 !important;
+  background-color: #1f0000 !important;
 }
 
 .text-maroon {
