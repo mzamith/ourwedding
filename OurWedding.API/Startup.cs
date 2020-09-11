@@ -34,7 +34,7 @@ namespace OurWedding.API
             services.AddDbContext<DataContext>(x =>
             {
                 x.UseLazyLoadingProxies();
-                x.UseSqlite(Configuration.GetConnectionString("SqlLiteConnection"));
+                x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             }, ServiceLifetime.Transient);
 
             ConfigureServices(services);
@@ -114,19 +114,21 @@ namespace OurWedding.API
             }
             else
             {
-                app.UseExceptionHandler(builder =>
-                {
-                    builder.Run(async context =>
-                    {
-                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        var error = context.Features.Get<IExceptionHandlerFeature>();
-                        if (error != null)
-                        {
-                            context.Response.AddApplicationError(error.Error.Message);
-                            await context.Response.WriteAsync(error.Error.Message);
-                        }
-                    });
-                });
+                // app.UseExceptionHandler(builder =>
+                // {
+                //     builder.Run(async context =>
+                //     {
+                //         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                //         var error = context.Features.Get<IExceptionHandlerFeature>();
+                //         if (error != null)
+                //         {
+                //             context.Response.AddApplicationError(error.Error.Message);
+                //             await context.Response.WriteAsync(error.Error.Message);
+                //         }
+                //     });
+                // });
+                app.UseDeveloperExceptionPage();
+                app.UseHsts();
             }
 
             // app.UseHttpsRedirection();
@@ -135,13 +137,13 @@ namespace OurWedding.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapFallbackToController("Index", "Fallback");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
