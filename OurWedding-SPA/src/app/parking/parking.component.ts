@@ -14,4 +14,12 @@ export class ParkingComponent implements OnInit {
   ngOnInit() {
     console.log(this.recommendations);
   }
+
+  getParking() {
+    return this.recommendations.filter((r) => r.category === 'PARKING');
+  }
+
+  getHotels() {
+    return this.recommendations.filter((r) => r.category === 'HOTEL');
+  }
 }
