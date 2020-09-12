@@ -22,6 +22,7 @@ export interface InviteAnswer {
   comment: string;
   answerDate: Date;
   status: string;
+  wantsTransportation: boolean;
 }
 
 export interface InviteeAnswer {

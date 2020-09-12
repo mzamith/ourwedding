@@ -105,6 +105,7 @@ export class RsvpComponent implements OnInit {
         status: null,
         comment: '',
         answerDate: new Date(),
+        wantsTransportation: false,
       };
     }
 

@@ -8,6 +8,7 @@ namespace OurWedding.API.Dtos
     {
         public int Id { get; set; }
         public string Comment { get; set; }
+        public bool WantsTransportation { get; set; }
         public DateTime AnswerDate { get; set; }
         public string Status { get; set; }
     }
