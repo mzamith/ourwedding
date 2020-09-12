@@ -26,16 +26,18 @@ export class InvitesOverviewComponent implements OnInit {
       i.invitees.forEach((iv) => {
         if (iv.inviteeAnswers.length > 0) {
           iv.inviteeAnswers.forEach((ia) => {
-            if (i.team === 'GROOM') {
-              this.groomGuests.push({
-                name: iv.name,
-                status: ia.isAttending ? 'Sim' : 'Não',
-              });
-            } else {
-              this.brideGuests.push({
-                name: iv.name,
-                status: ia.isAttending ? 'Sim' : 'Não',
-              });
+            if (ia.status === 'V') {
+              if (i.team === 'GROOM') {
+                this.groomGuests.push({
+                  name: iv.name,
+                  status: ia.isAttending ? 'Sim' : 'Não',
+                });
+              } else {
+                this.brideGuests.push({
+                  name: iv.name,
+                  status: ia.isAttending ? 'Sim' : 'Não',
+                });
+              }
             }
           });
         } else {

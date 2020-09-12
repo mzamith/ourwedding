@@ -63,7 +63,7 @@
         <div class="col-12 col-sm-4 mt-3" *ngIf="invite.canAddInvitee">
           <div class="custom-control custom-checkbox custom-checkbox-gold text-left">
             <input class="custom-control-input custom-checkbox custom-control-input-gold" type="checkbox" value=""
-              id="addedInviteeCheckbox" name="addedInviee" [(ngModel)]="addedAnInvitee" [disabled]="plusOneDisabled">
+              id="addedInviteeCheckbox" name="addedInviee" [(ngModel)]="addedAnInvitee" [disabled]="noMainGuestsAttend">
             <label class="custom-control-label" for="addedInviteeCheckbox">
               Vou levar um(a) acompanhante
             </label>
@@ -109,7 +109,8 @@
           <div class="col-12">
             <div class="custom-control custom-checkbox custom-checkbox-gold text-left">
               <input class="custom-control-input custom-checkbox custom-control-input-gold" type="checkbox" value=""
-                id="wantsTransportationCheckbox" name="transport" [(ngModel)]="invite.inviteAnswer.wantsTransportation">
+                id="wantsTransportationCheckbox" name="transport" [(ngModel)]="invite.inviteAnswer.wantsTransportation"
+                [disabled]="noMainGuestsAttend">
               <label class="custom-control-label" for="wantsTransportationCheckbox">
                 Assinala esta opção se estarias interessado em transporte Vermoim - Guimarães
               </label>

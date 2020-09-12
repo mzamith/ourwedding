@@ -17,7 +17,7 @@ export class RsvpPreviewComponent implements OnInit {
   ngOnInit() {
     this.invite = this.authService.currentInvite;
 
-    if (this.invite.answered) {
+    if (!this.invite.answered) {
       this.cardContent.firstLine =
         'Temos todo o gosto em receber-vos no nosso dia...';
       this.cardContent.secondLine =

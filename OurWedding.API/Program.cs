@@ -25,7 +25,7 @@ namespace OurWedding.API
                     var userManager = services.GetRequiredService<UserManager<Invite>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
                     var config = services.GetRequiredService<IConfiguration>();
-                    // context.Database.Migrate();
+                    context.Database.Migrate();
                     Seed.SeedUsers(userManager, roleManager, context, config);
                 }
                 catch (Exception ex)
