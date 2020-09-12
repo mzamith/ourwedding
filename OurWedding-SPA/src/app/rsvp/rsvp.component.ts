@@ -46,8 +46,6 @@ export class RsvpComponent implements OnInit {
         element.inviteeAnswer.restriction.length > 0;
     });
     this.checkMainGuests(null, null);
-    console.log(this.invite);
-    console.log(this.rsvpForm);
   }
 
   logout(): void {

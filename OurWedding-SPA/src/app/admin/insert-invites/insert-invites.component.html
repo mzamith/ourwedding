@@ -1,0 +1,14 @@
+<div class="container-fluid mb-5 mt-4">
+  <h1 class="mt-4 mb-4">Inserir Convites</h1>
+  <div class="row">
+    <div class="col-12">
+      <p>Inserir o JSON de convites</p>
+      <div class="form-group mt-5">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="invitecomment"
+          [(ngModel)]="invitesJson"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary mr-1" [disabled]="invitesJson.length === 0"
+        (click)="go()">Inserir</button>
+    </div>
+  </div>
+</div>

@@ -11,9 +11,7 @@ export class ParkingComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.recommendations);
-  }
+  ngOnInit() {}
 
   getParking() {
     return this.recommendations.filter((r) => r.category === 'PARKING');

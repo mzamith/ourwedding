@@ -1,3 +1,7 @@
+import { InvitesOverviewComponent } from './admin/invites-overview/invites-overview.component';
+import { InsertRecommendationComponent } from './admin/insert-recommendation/insert-recommendation.component';
+import { InsertInvitesComponent } from './admin/insert-invites/insert-invites.component';
+import { ManageInvitesComponent } from './admin/manage-invites/manage-invites.component';
 import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
 import { AdminResolver } from './_resolvers/admin.resolver';
 import { AdminComponent } from './admin/admin.component';
@@ -30,12 +34,42 @@ export const appRoutes: Routes = [
         path: 'admin',
         component: AdminComponent,
         data: { roles: ['Admin'] },
-        resolve: { invites: AdminResolver },
         children: [
+          {
+            path: '',
+            redirectTo: 'invites',
+            pathMatch: 'full',
+          },
+          {
+            path: 'invites',
+            component: ManageInvitesComponent,
+            data: { roles: ['Admin'] },
+            resolve: { invites: AdminResolver },
+            outlet: 'admin',
+          },
+          {
+            path: 'overview',
+            component: InvitesOverviewComponent,
+            data: { roles: ['Admin'] },
+            resolve: { invites: AdminResolver },
+            outlet: 'admin',
+          },
+          {
+            path: 'createinvites',
+            component: InsertInvitesComponent,
+            data: { roles: ['Admin'] },
+            outlet: 'admin',
+          },
           {
             path: 'recommendations',
             component: ManageRecommendationsComponent,
             resolve: { recommendations: RecommendationsResolver },
+            outlet: 'admin',
+          },
+          {
+            path: 'createrecommendations',
+            component: InsertRecommendationComponent,
+            outlet: 'admin',
           },
         ],
       },

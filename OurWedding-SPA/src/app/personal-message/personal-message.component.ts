@@ -14,6 +14,5 @@ export class PersonalMessageComponent implements OnInit {
   ngOnInit() {
     this.message = this.authService.currentInvite.welcomeMessage;
     this.name = this.authService.currentInvite.name;
-    console.log(this.message);
   }
 }

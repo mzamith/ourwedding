@@ -1,0 +1,65 @@
+<div class="container-fluid mb-5 mt-4">
+  <h1>Visão Geral</h1>
+  <hr />
+
+  <p><b>Convites Totais:</b> {{invites.length}}</p>
+  <p><b>Convites Respondidos:</b> {{answeredInvites().length}}</p>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <h3>Rita</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let guestRecord of brideGuests">
+              <td>{{guestRecord.name}}</td>
+              <td
+                [ngClass]="{'text-success': guestRecord.status === 'Sim', 'text-danger': guestRecord.status === 'Não', 'text-warning': guestRecord.status === 'Pendente'}">
+                <i *ngIf="guestRecord.status === 'Pendente'" class="fa fa-exclamation-circle mr-2"></i><i
+                  *ngIf="guestRecord.status === 'Sim'" class="fa fa-check-circle mr-2"></i><i
+                  *ngIf="guestRecord.status === 'Não'" class="fa fa-times-circle mr-2"></i>{{guestRecord.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <small><b>Total: </b>{{brideGuests.length}}</small><br>
+        <small><b class="text-success">Confirmados:</b> {{filterAttendence(brideGuests, 'Sim').length}}</small><br>
+        <small><b class="text-danger">Rejeitados:</b> {{filterAttendence(brideGuests, 'Não').length}}</small><br>
+        <small><b class="text-warning">Pendentes:</b> {{filterAttendence(brideGuests, 'Pendente').length}}</small><br>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h3>Manel</h3>
+        <table class="table ">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let guestRecord of groomGuests">
+              <td>{{guestRecord.name}}</td>
+              <td
+                [ngClass]="{'text-success': guestRecord.status === 'Sim', 'text-danger': guestRecord.status === 'Não', 'text-warning': guestRecord.status === 'Pendente'}">
+                <i *ngIf="guestRecord.status === 'Pendente'" class="fa fa-exclamation-circle mr-2"></i><i
+                  *ngIf="guestRecord.status === 'Sim'" class="fa fa-check-circle mr-2"></i><i
+                  *ngIf="guestRecord.status === 'Não'" class="fa fa-times-circle mr-2"></i>{{guestRecord.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <small><b>Total: </b>{{brideGuests.length}}</small><br>
+        <small><b class="text-success">Confirmados:</b> {{filterAttendence(brideGuests, 'Sim').length}}</small><br>
+        <small><b class="text-danger">Rejeitados:</b> {{filterAttendence(brideGuests, 'Não').length}}</small><br>
+        <small><b class="text-warning">Pendentes:</b> {{filterAttendence(brideGuests, 'Pendente').length}}</small><br>
+      </div>
+    </div>
+  </div>
+</div>

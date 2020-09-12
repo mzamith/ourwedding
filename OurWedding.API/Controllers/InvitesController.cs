@@ -2,11 +2,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OurWedding.API.Data;
 using OurWedding.API.Dtos;
 using OurWedding.API.Filters;
 using OurWedding.API.Helpers;
+using OurWedding.API.Models;
 
 namespace OurWedding.API.Controllers
 {
@@ -18,8 +21,10 @@ namespace OurWedding.API.Controllers
     {
         private readonly IWeddingRepository _repo;
         private readonly IMapper _mapper;
-        public InvitesController(IWeddingRepository repo, IMapper mapper)
+        private readonly UserManager<Invite> _userManager;
+        public InvitesController(IWeddingRepository repo, IMapper mapper, UserManager<Invite> userManager)
         {
+            _userManager = userManager;
             _mapper = mapper;
             _repo = repo;
         }

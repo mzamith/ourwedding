@@ -1,3 +1,40 @@
-<p>
-  manage-recommendations works!
-</p>
+<div class="container-fluid mb-5 mt-4">
+  <h1>Gestão de Recomendações</h1>
+  <div class="accordion mt-5" id="accordionExample">
+    <div class="card" *ngFor="let recommendation of recommendations">
+      <div class="card-header" id="headingOne" attr.data-target="#row{{recommendation.id}}" data-toggle="collapse">
+
+        <div class="row">
+          <div class="col-6 ma">
+            <h5 class="mb-0">
+              <p class="mb-0">{{recommendation.title}}</p>
+            </h5>
+          </div>
+          <div class="col-3 ma">
+            <p class="mb-0">
+              {{recommendation.category}}
+            </p>
+          </div>
+          <div class="col-3 ma">
+            <p class="mb-0">
+              <a class="btn btn-danger text-center text-white" (click)="deleteRecommendation(recommendation.id)"><i
+                  class="fa fa-trash-o"></i></a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="row{{recommendation.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <p><b>Morada: </b>{{recommendation.address}}</p>
+          <p><b>Descrição: </b>{{recommendation.description}}</p>
+          <p><b>Link: </b><a href="{{recommendation.mapCoordinates}}"
+              target="_blank">{{recommendation.mapCoordinates}}</a></p>
+          <p><b>Preço: </b>{{recommendation.price}}</p>
+          <img src="{{recommendation.photoUrl}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

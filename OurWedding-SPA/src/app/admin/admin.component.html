@@ -1,49 +1,19 @@
-<ng-template #longContent let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Histórico de Respostas</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <h2 class="text-center">{{selectedInvite.name}}</h2>
-    <div *ngFor="let answer of sortedAnswers(selectedInvite); let i = index;" class="container">
-      <p><b>Data:</b> {{answer.answerDate | date:'short'}}</p>
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Presença</th>
-            <th scope="col">Restrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let guest of selectedInvite.invitees">
-            <td>{{guest.name}}</td>
-            <td>{{sortedInviteeAnswers(guest)[i].isAttending ? 'Sim' : 'Não'}}</td>
-            <td>{{sortedInviteeAnswers(guest)[i].restriction}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p><b>Comentário:</b> {{answer.comment}}</p>
-      <hr />
-    </div>
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-  </div>
-</ng-template>
-
-
 <div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled}">
   <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">Bride&Groom </div>
     <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Convites</a>
-      <a [routerLink]="['/admin/recommendations']" routerLinkActive="router-link-active"
+      <a [routerLink]="[{ outlets: { admin: ['overview'] } }]" (click)=" nav_toggle($event)"
+        class=" list-group-item list-group-item-action bg-light">Visão Geral</a>
+      <a [routerLink]="[{ outlets: { admin: ['invites'] } }]" (click)=" nav_toggle($event)"
+        class=" list-group-item list-group-item-action bg-light">Convites</a>
+      <a [routerLink]="[{ outlets: { admin: ['createinvites'] } }]" (click)=" nav_toggle($event)"
+        class="list-group-item list-group-item-action bg-light">Inserir Convites</a>
+      <a [routerLink]="[{ outlets: { admin: ['recommendations'] } }]" (click)=" nav_toggle($event)"
         class="list-group-item list-group-item-action bg-light">Recomendações</a>
+      <a [routerLink]="[{ outlets: { admin: ['createrecommendations'] } }]" (click)=" nav_toggle($event)"
+        class="list-group-item list-group-item-action bg-light">Criar
+        Recomendações</a>
 
     </div>
   </div>
@@ -65,93 +35,8 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <h1 class="mt-4 mb-4">Gestão de Convites</h1>
-      <div class="row">
-        <div class="col-12 col-sm-4 mt-3">
-          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary filter-button" (click)="filterInvites('GROOM')">Noivo</button>
-            <button type="button" class="btn filter-button btn-pink" (click)="filterInvites('BRIDE')">Noiva</button>
-            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('RESET')">Todos</button>
-          </div>
-        </div>
-        <div class="col-12 col-sm-4 mt-3">
-          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-success filter-button"
-              (click)="filterInvites('ANSWERED')">Respondido</button>
-            <button type="button" class="btn btn-warning filter-button"
-              (click)="filterInvites('PENDING')">Pendente</button>
-            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('ALL')">Todos</button>
-          </div>
-        </div>
-        <div class="col-12 col-sm-4 mt-3">
-          <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
-            <button type="button" class="btn btn-success filter-button"
-              (click)="filterInvites('CONFIRMED')">Confirmado</button>
-            <button type="button" class="btn btn-danger filter-button"
-              (click)="filterInvites('DECLINED')">Rejeitado</button>
-            <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('ALL')">Todos</button>
-          </div>
-        </div>
-      </div>
-      <div class="accordion mt-5" id="accordionExample">
+    <router-outlet name='admin'></router-outlet>
 
-        <div class="card" *ngFor="let invite of invites">
-          <div class="card-header" id="headingOne" attr.data-target="#row{{invite.id}}" data-toggle="collapse">
-
-            <div class="row">
-              <div class="col-6">
-                <h5 class="mb-0">
-                  <p>{{invite.name}}</p>
-                </h5>
-              </div>
-              <div class="col-6">
-                <p
-                  [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}">
-                  <i class="fa fa-check-circle"></i> {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
-                  <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          <div id="row{{invite.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Presença</th>
-                    <th scope="col">Restrição</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let guest of invite.invitees">
-                    <td>{{guest.name}}</td>
-                    <td>{{getCurrentAttendence(guest) ? 'Sim' : 'Não'}}</td>
-                    <td>{{getCurrentRestriction(guest)}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
-            </div>
-            <div class="container-fluid mt-5 mb-5">
-              <button type="button" class="btn btn-secondary mr-1" [disabled]="invite.inviteAnswers.length === 0"
-                (click)="openScrollableContent(longContent, invite)">Ver
-                Histórico</button>
-              <button type="button" class="btn btn-danger mr-1" [disabled]="invite.isBlacklisted"
-                (click)="blacklist(invite.id, true)">Retirar
-                Acesso</button>
-              <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
-                (click)="blacklist(invite.id, false)">Repor Acesso</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
   <!-- /#page-content-wrapper -->
 </div>
-<router-outlet name='admin'></router-outlet>

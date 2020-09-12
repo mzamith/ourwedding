@@ -27,7 +27,7 @@ export class WelcomeComponent implements OnInit {
 
   redirect() {
     if (this.authService.roleMatch(['Admin'])) {
-      this.router.navigate(['/admin']);
+      this.router.navigateByUrl('/admin/(admin:invites)');
     } else {
       this.router.navigate(['/home']);
     }
@@ -39,7 +39,6 @@ export class WelcomeComponent implements OnInit {
         this.redirect();
       },
       (error) => {
-        console.log(error);
         this.alert.danger(error);
         this.loginForm.reset();
       }

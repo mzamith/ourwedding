@@ -64,6 +64,31 @@ namespace OurWedding.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete("invite/{id}")]
+        public async Task<IActionResult> DeleteInvite(int id)
+        {
+            var invite = await _userManager.FindByIdAsync(id.ToString());
+            await _userManager.DeleteAsync(invite);
+
+            return NoContent();
+
+
+        }
+
+        [HttpDelete("invites")]
+        public async Task<IActionResult> DeleteInvites()
+        {
+            var invites = await _userManager.GetUsersInRoleAsync("Guest");
+
+            foreach (var invite in invites)
+            {
+                await _userManager.DeleteAsync(invite);
+            }
+
+            return NoContent();
+
+        }
+
 
 
     }

@@ -1,0 +1,126 @@
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Histórico de Respostas</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2 class="text-center">{{selectedInvite.name}}</h2>
+    <div *ngFor="let answer of sortedAnswers(selectedInvite); let i = index;" class="container">
+      <p><b>Data:</b> {{answer.answerDate | date:'short'}}</p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Presença</th>
+            <th scope="col">Restrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let guest of selectedInvite.invitees">
+            <td>{{guest.name}}</td>
+            <td>{{sortedInviteeAnswers(guest)[i].isAttending ? 'Sim' : 'Não'}}</td>
+            <td>{{sortedInviteeAnswers(guest)[i].restriction}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><b>Comentário:</b> {{answer.comment}}</p>
+      <hr />
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<div class="container-fluid mt-4 mb-4">
+  <h1 class="mb-4">Gestão de Convites</h1>
+  <div class="row">
+    <div class="col-12 col-sm-4 mt-3">
+      <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary filter-button" (click)="filterInvites('GROOM')">Noivo</button>
+        <button type="button" class="btn filter-button btn-pink" (click)="filterInvites('BRIDE')">Noiva</button>
+        <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('RESET')">Todos</button>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 mt-3">
+      <div class="btn-group btn-group-md ml-1" role="group" aria-label="...">
+        <button type="button" class="btn btn-success filter-button"
+          (click)="filterInvites('ANSWERED')">Respondido</button>
+        <button type="button" class="btn btn-warning filter-button" (click)="filterInvites('PENDING')">Pendente</button>
+        <button type="button" class="btn btn-dark filter-button" (click)="filterInvites('ALL')">Todos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion mt-5" id="accordionExample">
+    <div class="card" *ngFor="let invite of invites">
+      <div class="card-header" id="headingOne" attr.data-target="#row{{invite.id}}" data-toggle="collapse">
+
+        <div class="row">
+          <div class="col-6 ma">
+            <h5 class="mb-0">
+              <p class="ma">{{invite.name}} ({{invite.invitees.length}})</p>
+            </h5>
+          </div>
+          <div class="col-4 ma">
+            <p [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}"
+              class="ma">
+              <i class="fa fa-check-circle"></i> {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
+              <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
+            </p>
+          </div>
+          <div class="col-2">
+            <p class="mb-0">
+              <a class="btn btn-danger text-center text-white" (click)="deleteInvite(invite.id)"><i
+                  class="fa fa-trash-o"></i></a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="row{{invite.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Presença</th>
+                <th scope="col">Restrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let guest of invite.invitees">
+                <td>{{guest.name}}</td>
+                <td>{{getCurrentAttendence(guest)}}</td>
+                <td>{{getCurrentRestriction(guest)}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="invite.inviteAnswers.length > 0"><b>Transporte:
+            </b>{{getCurrentAnswer(invite)?.wantsTransportation ? 'Sim': 'Não'}}</p>
+          <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
+        </div>
+        <div class="container-fluid mt-5 mb-5">
+          <button type="button" class="btn btn-secondary mr-1" [disabled]="invite.inviteAnswers.length === 0"
+            (click)="openScrollableContent(longContent, invite)">Ver
+            Histórico</button>
+          <button type="button" class="btn btn-danger mr-1" [disabled]="invite.isBlacklisted"
+            (click)="blacklist(invite.id, true)">Retirar
+            Acesso</button>
+          <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
+            (click)="blacklist(invite.id, false)">Repor Acesso</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="invites.length > 0" class="row mt-3">
+    <div class="col-12">
+      <button class="btn btn-danger text-center text-white" (click)="deleteAllInvites()"><i
+          class="fa fa-trash-o mr-2"></i>Delete All Invites</button>
+    </div>
+  </div>
+</div>

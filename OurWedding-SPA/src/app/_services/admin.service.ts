@@ -56,4 +56,16 @@ export class AdminService {
       {}
     );
   }
+
+  deleteInvite(id: number) {
+    return this.http.delete(this.baseUrl + 'invite/' + id);
+  }
+
+  deleteAllInvites() {
+    return this.http.delete(this.baseUrl + 'invites');
+  }
+
+  createInvites(model: Invite[]) {
+    return this.http.post(this.baseUrl + 'invites', model);
+  }
 }

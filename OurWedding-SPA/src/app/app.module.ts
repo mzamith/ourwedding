@@ -21,6 +21,10 @@ import { AdminComponent } from './admin/admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { PersonalMessageComponent } from './personal-message/personal-message.component';
 import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
+import { ManageInvitesComponent } from './admin/manage-invites/manage-invites.component';
+import { InsertInvitesComponent } from './admin/insert-invites/insert-invites.component';
+import { InsertRecommendationComponent } from './admin/insert-recommendation/insert-recommendation.component';
+import { InvitesOverviewComponent } from './admin/invites-overview/invites-overview.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -54,6 +58,10 @@ export function getToken(): string {
     FooterComponent,
     PersonalMessageComponent,
     ManageRecommendationsComponent,
+    ManageInvitesComponent,
+    InsertInvitesComponent,
+    InsertRecommendationComponent,
+    InvitesOverviewComponent,
   ],
   imports: [
     BrowserModule,
