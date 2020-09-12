@@ -7,6 +7,7 @@
   background-image: url("https://res.cloudinary.com/dp8csoo5l/image/upload/v1599757581/IMG_3517_Fotor_i57lnj.jpg");
   background-size: cover;
   background-position: bottom;
+  border-radius: 0;
 }
 
 .jumbotron .container {
