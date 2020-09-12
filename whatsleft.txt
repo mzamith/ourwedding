@@ -1,0 +1,16 @@
+- Auto-login DONE
+
+- Spacing on the buttons DONE
+- Margins on rsvp form DONE
+- Colocar os contactos DONE
+
+- Insert transportation query DONE
+
+- Delete Invite
+- Insert Multiple invites.
+
+- Insert recommendation functionality
+- Delete recommendation functionality
+
+- Refactor components
+
