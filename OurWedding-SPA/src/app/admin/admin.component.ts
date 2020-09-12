@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   }
 
   nav_toggle(event: any) {
-    if (window.innerWidth < 568) {
+    if (window.innerWidth < 800) {
       this.toggle(event);
     }
   }

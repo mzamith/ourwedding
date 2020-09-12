@@ -6,17 +6,17 @@
 
         <div class="row">
           <div class="col-6 ma">
-            <h5 class="mb-0">
+            <h6 class="mb-0">
               <p class="mb-0">{{recommendation.title}}</p>
-            </h5>
+            </h6>
           </div>
-          <div class="col-3 ma">
-            <p class="mb-0">
+          <div class="col-4 ma text-center">
+            <small class="mb-0">
               {{recommendation.category}}
-            </p>
+            </small>
           </div>
-          <div class="col-3 ma">
-            <p class="mb-0">
+          <div class="col-2 ma">
+            <p class="mb-0 text-center">
               <a class="btn btn-danger text-center text-white" (click)="deleteRecommendation(recommendation.id)"><i
                   class="fa fa-trash-o"></i></a>
             </p>

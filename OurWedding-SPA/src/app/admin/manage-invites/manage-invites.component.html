@@ -66,17 +66,18 @@
             </h5>
           </div>
           <div class="col-4 ma">
-            <p [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}"
+            <small
+              [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}"
               class="ma">
               <i *ngIf="invite.inviteAnswers.length > 0" class="fa fa-check-circle"></i> <i
                 *ngIf="invite.inviteAnswers.length === 0" class="fa fa-minus-circle"></i>
               {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
               <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
-            </p>
+            </small>
           </div>
-          <div class="col-2">
-            <p class="mb-0">
-              <a class="btn btn-danger text-center text-white" (click)="deleteInvite(invite.id)"><i
+          <div class="col-2 ma">
+            <p class="mb-0 text-center">
+              <a class="btn btn-danger btn-sm text-center text-white" (click)="deleteInvite(invite.id)"><i
                   class="fa fa-trash-o"></i></a>
             </p>
           </div>
@@ -107,14 +108,14 @@
           <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
         </div>
         <div class="container-fluid mt-5 mb-5">
-          <button type="button" class="btn btn-secondary mr-1" [disabled]="invite.inviteAnswers.length === 0"
-            (click)="openScrollableContent(longContent, invite)">Ver
-            Histórico</button>
+          <button type="button" class="btn btn-secondary mr-1 bold" [disabled]="invite.inviteAnswers.length === 0"
+            (click)="openScrollableContent(longContent, invite)"> <small class="bold">
+              Histórico</small></button>
           <button type="button" class="btn btn-danger mr-1" [disabled]="invite.isBlacklisted"
-            (click)="blacklist(invite.id, true)">Retirar
-            Acesso</button>
+            (click)="blacklist(invite.id, true)"><small class="bold">
+              Retirar Acesso</small></button>
           <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
-            (click)="blacklist(invite.id, false)">Repor Acesso</button>
+            (click)="blacklist(invite.id, false)"><small class="bold">Repor Acesso</small></button>
         </div>
       </div>
     </div>

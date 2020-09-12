@@ -42,3 +42,7 @@ body {
     margin-left: -15rem;
   }
 }
+
+a {
+  font-weight: bold;
+}

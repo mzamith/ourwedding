@@ -79,3 +79,7 @@ textarea {
 .ma {
   margin: auto;
 }
+
+.bold {
+  font-weight: bold;
+}
