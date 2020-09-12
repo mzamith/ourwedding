@@ -5,10 +5,10 @@ import { ManageInvitesComponent } from './admin/manage-invites/manage-invites.co
 import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
 import { AdminResolver } from './_resolvers/admin.resolver';
 import { AdminComponent } from './admin/admin.component';
-import { RsvpComponent } from './rsvp/rsvp.component';
+import { RsvpComponent } from './guest/rsvp/rsvp.component';
 import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './guest/home/home.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
 import { InviteResolver } from './_resolvers/invite.resolver';

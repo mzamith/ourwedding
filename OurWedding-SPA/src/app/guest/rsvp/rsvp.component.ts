@@ -1,12 +1,12 @@
 import { NgForm } from '@angular/forms';
-import { Invitee } from './../_models/Invite';
-import { AlertService } from './../_services/alert.service';
-import { InviteService } from './../_services/invite.service';
-import { SimpleInvite } from './../_models/SimpleInvite';
-import { AuthService } from './../_services/auth.service';
+import { Invitee } from './../../_models/Invite';
+import { AlertService } from './../../_services/alert.service';
+import { InviteService } from './../../_services/invite.service';
+import { SimpleInvite } from './../../_models/SimpleInvite';
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Invite } from '../_models/Invite';
+import { Invite } from '../../_models/Invite';
 
 @Component({
   selector: 'app-rsvp',

@@ -1,7 +1,7 @@
-import { Recommendation } from './../_models/Recommendation';
-import { SimpleInvite } from './../_models/SimpleInvite';
+import { Recommendation } from './../../_models/Recommendation';
+import { SimpleInvite } from './../../_models/SimpleInvite';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from './../_services/auth.service';
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({

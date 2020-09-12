@@ -12,7 +12,6 @@
     <h1 class="styled-title text-center mb-5">RSVP</h1>
 
     <form #rsvpForm="ngForm">
-
       <div class="form-group text-center">
         <div *ngFor="let guest of invite.invitees; let i = index" class="row">
           <div *ngIf="!guest.isMainGuest && invite.invitees[i-1].isMainGuest" class="col-12 text-left mb-0 mt-2">
@@ -124,7 +123,6 @@
             [(ngModel)]="invite.inviteAnswer.comment"></textarea>
         </div>
 
-
         <hr />
         <button class="btn btn-success" (click)="submit()" type="submit">
           RSVP
@@ -132,6 +130,7 @@
         <button class="btn btn-default" [routerLink]="['/home']" type="button">
           Cancelar
         </button>
+
       </div>
     </form>
   </div>

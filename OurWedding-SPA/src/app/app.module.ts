@@ -9,22 +9,24 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgbToastModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './guest/home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AlertComponent } from './alert/alert.component';
-import { JumbotronComponent } from './jumbotron/jumbotron.component';
-import { ScheduleComponent } from './schedule/schedule.component';
-import { ParkingComponent } from './parking/parking.component';
-import { RsvpPreviewComponent } from './rsvp-preview/rsvp-preview.component';
-import { RsvpComponent } from './rsvp/rsvp.component';
+import { JumbotronComponent } from './guest/jumbotron/jumbotron.component';
+import { ScheduleComponent } from './guest/schedule/schedule.component';
+import { RecommendationsComponent } from './guest/recommendations/recommendations.component';
+import { RsvpPreviewComponent } from './guest/rsvp-preview/rsvp-preview.component';
+import { RsvpComponent } from './guest/rsvp/rsvp.component';
 import { AdminComponent } from './admin/admin.component';
-import { FooterComponent } from './footer/footer.component';
-import { PersonalMessageComponent } from './personal-message/personal-message.component';
+import { FooterComponent } from './guest/footer/footer.component';
+import { PersonalMessageComponent } from './guest/personal-message/personal-message.component';
 import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
 import { ManageInvitesComponent } from './admin/manage-invites/manage-invites.component';
 import { InsertInvitesComponent } from './admin/insert-invites/insert-invites.component';
 import { InsertRecommendationComponent } from './admin/insert-recommendation/insert-recommendation.component';
 import { InvitesOverviewComponent } from './admin/invites-overview/invites-overview.component';
+import { RecommendationCardComponent } from './guest/recommendations/recommendation-card/recommendation-card.component';
+import { RsvpPreviewCardComponent } from './guest/rsvp-preview/rsvp-preview-card/rsvp-preview-card.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -38,6 +40,7 @@ import { AdminService } from './_services/admin.service';
 import { AdminResolver } from './_resolvers/admin.resolver';
 
 import { appRoutes } from './routes';
+import { DatePipe } from '@angular/common';
 
 export function getToken(): string {
   return localStorage.getItem('token');
@@ -51,7 +54,7 @@ export function getToken(): string {
     AlertComponent,
     JumbotronComponent,
     ScheduleComponent,
-    ParkingComponent,
+    RecommendationsComponent,
     RsvpPreviewComponent,
     RsvpComponent,
     AdminComponent,
@@ -62,6 +65,8 @@ export function getToken(): string {
     InsertInvitesComponent,
     InsertRecommendationComponent,
     InvitesOverviewComponent,
+    RecommendationCardComponent,
+    RsvpPreviewCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +96,7 @@ export function getToken(): string {
     InviteResolver,
     AdminService,
     AdminResolver,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

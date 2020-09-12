@@ -68,7 +68,9 @@
           <div class="col-4 ma">
             <p [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}"
               class="ma">
-              <i class="fa fa-check-circle"></i> {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
+              <i *ngIf="invite.inviteAnswers.length > 0" class="fa fa-check-circle"></i> <i
+                *ngIf="invite.inviteAnswers.length === 0" class="fa fa-minus-circle"></i>
+              {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
               <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
             </p>
           </div>

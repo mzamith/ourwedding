@@ -1,0 +1,19 @@
+.card {
+  box-shadow: 2px 5px 9px #888888;
+  height: 70vh;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 90%
+}
+
+p {
+  font-size: 2vh;
+}
+
+@media (max-width: 567px) {
+  .card {
+    height: 90vh;
+  }
+
+}

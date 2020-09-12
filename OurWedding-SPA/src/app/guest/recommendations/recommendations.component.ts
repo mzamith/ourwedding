@@ -1,12 +1,12 @@
-import { Recommendation } from './../_models/Recommendation';
+import { Recommendation } from '../../_models/Recommendation';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-parking',
-  templateUrl: './parking.component.html',
-  styleUrls: ['./parking.component.css'],
+  selector: 'app-recommendations',
+  templateUrl: './recommendations.component.html',
+  styleUrls: ['./recommendations.component.css'],
 })
-export class ParkingComponent implements OnInit {
+export class RecommendationsComponent implements OnInit {
   @Input() recommendations: Recommendation[];
 
   constructor() {}

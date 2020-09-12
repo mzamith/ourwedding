@@ -1,0 +1,19 @@
+<div *ngIf="invite.answered" class="h-100">
+  <div class="card">
+    <h1 class="mb-2 mt-5 styled-title">RSVP</h1>
+    <div class="card-img-wrapper mb-2 mt-3">
+      <img width="50px" class="" src="{{content.icon}}" />
+    </div>
+    <div class="card-body p-1 m-2">
+      <h6 class="card-title text-center mb-sm-5"><b>{{invite.name}}:</b></h6>
+      <p class="card-text text-center mt-5">{{content.firstLine}}
+      </p>
+      <p class="card-text text-center mt-3">{{content.secondLine}}</p>
+      <small class="text-muted">Agradecemos uma resposta final antes do dia 01/05/2021</small>
+      <div class="row" class="align-items-center mb-3">
+        <a class="btn btn-light text-center mt-5 bg-maroon text-white" [routerLink]="['/rsvp']"><i
+            class="fa fa-edit mr-2"></i>{{content.button}}</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
         <a class="nav-link" (click)="scroll(schedule)">Agenda</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="scroll(parking)">Estacionamento</a>
+        <a class="nav-link" (click)="scroll(recomms)">Recomendações</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="scroll(rsvp)">RSVP</a>
@@ -26,6 +26,7 @@
     </ul>
   </div>
 </nav>
+
 <div #jumbotron>
   <app-jumbotron [welcomeMessage]="personal"></app-jumbotron>
 </div>
@@ -36,8 +37,8 @@
   <div #schedule class="bg-maroon">
     <app-schedule></app-schedule>
   </div>
-  <div #parking>
-    <app-parking [recommendations]="recommendations"></app-parking>
+  <div #recomms>
+    <app-recommendations [recommendations]="recommendations"></app-recommendations>
   </div>
   <div #rsvp class="bg-maroon">
     <app-rsvp-preview></app-rsvp-preview>
