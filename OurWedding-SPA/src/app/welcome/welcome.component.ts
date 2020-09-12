@@ -19,16 +19,24 @@ export class WelcomeComponent implements OnInit {
     private alert: AlertService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.loggedIn()) {
+      this.redirect();
+    }
+  }
+
+  redirect() {
+    if (this.authService.roleMatch(['Admin'])) {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
 
   login() {
     this.authService.login(this.accessKey).subscribe(
       (next) => {
-        if (this.authService.roleMatch(['Admin'])) {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/home']);
-        }
+        this.redirect();
       },
       (error) => {
         console.log(error);

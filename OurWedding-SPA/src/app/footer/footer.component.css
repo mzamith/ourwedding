@@ -1,11 +1,6 @@
-/* Footer */
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
 section {
   padding: 20px 0;
 }
-
-
 
 #footer {
   background: #a6a6a6 !important;
@@ -17,15 +12,14 @@ section {
 
 #footer ul.social li a i {
   margin-right: 5px;
-  font-size: 25px;
+  font-size: 30px;
   -webkit-transition: .5s all ease;
   -moz-transition: .5s all ease;
   transition: .5s all ease;
 }
 
 #footer ul.social li:hover a i {
-  font-size: 30px;
-  margin-top: -10px;
+  font-size: 35px;
 }
 
 #footer ul.social li a,

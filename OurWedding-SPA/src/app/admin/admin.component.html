@@ -42,7 +42,8 @@
     <div class="sidebar-heading">Bride&Groom </div>
     <div class="list-group list-group-flush">
       <a href="#" class="list-group-item list-group-item-action bg-light">Convites</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Recomendações</a>
+      <a [routerLink]="['/admin/recommendations']" routerLinkActive="router-link-active"
+        class="list-group-item list-group-item-action bg-light">Recomendações</a>
 
     </div>
   </div>
@@ -136,10 +137,10 @@
               <p *ngIf="invite.inviteAnswers.length > 0"><b>Comentário: </b>{{getCurrentAnswer(invite)?.comment}}</p>
             </div>
             <div class="container-fluid mt-5 mb-5">
-              <button type="button" class="btn btn-secondary mr-3" [disabled]="invite.inviteAnswers.length === 0"
+              <button type="button" class="btn btn-secondary mr-1" [disabled]="invite.inviteAnswers.length === 0"
                 (click)="openScrollableContent(longContent, invite)">Ver
                 Histórico</button>
-              <button type="button" class="btn btn-danger mr-3" [disabled]="invite.isBlacklisted"
+              <button type="button" class="btn btn-danger mr-1" [disabled]="invite.isBlacklisted"
                 (click)="blacklist(invite.id, true)">Retirar
                 Acesso</button>
               <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
@@ -153,3 +154,4 @@
   </div>
   <!-- /#page-content-wrapper -->
 </div>
+<router-outlet name='admin'></router-outlet>

@@ -1,3 +1,4 @@
+import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
 import { AdminResolver } from './_resolvers/admin.resolver';
 import { AdminComponent } from './admin/admin.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
@@ -24,13 +25,19 @@ export const appRoutes: Routes = [
         path: 'rsvp',
         component: RsvpComponent,
         resolve: { invite: InviteResolver },
-        // data: { roles: ['Admin', 'Moderator'] },
       },
       {
         path: 'admin',
         component: AdminComponent,
         data: { roles: ['Admin'] },
         resolve: { invites: AdminResolver },
+        children: [
+          {
+            path: 'recommendations',
+            component: ManageRecommendationsComponent,
+            resolve: { recommendations: RecommendationsResolver },
+          },
+        ],
       },
     ],
   },

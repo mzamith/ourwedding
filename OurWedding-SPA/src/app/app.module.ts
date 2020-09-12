@@ -20,6 +20,7 @@ import { RsvpComponent } from './rsvp/rsvp.component';
 import { AdminComponent } from './admin/admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { PersonalMessageComponent } from './personal-message/personal-message.component';
+import { ManageRecommendationsComponent } from './admin/manage-recommendations/manage-recommendations.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -52,6 +53,7 @@ export function getToken(): string {
     AdminComponent,
     FooterComponent,
     PersonalMessageComponent,
+    ManageRecommendationsComponent,
   ],
   imports: [
     BrowserModule,

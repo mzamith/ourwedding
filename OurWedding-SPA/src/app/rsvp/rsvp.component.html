@@ -39,7 +39,7 @@
             <small>Tens alguma restrição alimentar?</small>
           </div>
 
-          <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-5 text-left">
+          <div *ngIf="guest.inviteeAnswer.isAttending" class="col-12 col-sm-5 mb-3 text-left">
             <div class="custom-control custom-switch">
               <input type="checkbox" class="custom-control-input" id="{{ guest.id }}rest" name="{{ guest.id }}rest"
                 [(ngModel)]="guest.inviteeAnswer.hasRestriction" />
