@@ -1,4 +1,3 @@
-import { Invite } from './../../_models/Invite';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from './../../_services/alert.service';
@@ -8,8 +7,7 @@ import {
   DetailedInvite,
   DetailedInvitee,
 } from './../../_models/DetailedInvite';
-import { Pagination, PaginatedResult } from './../../_models/pagination';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
+import { Pagination } from './../../_models/pagination';
 
 @Component({
   selector: 'app-manage-invites',
@@ -21,6 +19,7 @@ export class ManageInvitesComponent implements OnInit {
   invitesMemory: DetailedInvite[];
   selectedInvite: DetailedInvite;
   pagination: Pagination;
+
   constructor(
     private adminService: AdminService,
     private alert: AlertService,

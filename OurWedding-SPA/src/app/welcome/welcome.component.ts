@@ -27,7 +27,7 @@ export class WelcomeComponent implements OnInit {
 
   redirect() {
     if (this.authService.roleMatch(['Admin'])) {
-      this.router.navigateByUrl('/admin/(admin:invites)');
+      this.router.navigateByUrl('/admin/(admin:overview)');
     } else {
       this.router.navigate(['/home']);
     }
