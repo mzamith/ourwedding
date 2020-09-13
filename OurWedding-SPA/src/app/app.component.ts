@@ -11,9 +11,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
-  testlogin: any = {
-    accessKey: 'adminkey',
-  };
   token: Token;
 
   constructor(private authService: AuthService) {}
