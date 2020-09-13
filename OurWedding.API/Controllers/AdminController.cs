@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -85,6 +87,59 @@ namespace OurWedding.API.Controllers
                 await _userManager.DeleteAsync(invite);
             }
 
+            return NoContent();
+
+        }
+
+        [HttpGet("accesses")]
+        public async Task<IActionResult> GetAccesses()
+        {
+            var invites = await _userManager.GetUsersInRoleAsync("Guest");
+            var adminInvites = await _userManager.GetUsersInRoleAsync("Admin");
+            var allInvites = invites.Concat(adminInvites);
+            var accesses = _mapper.Map<IEnumerable<AccessesDto>>(allInvites);
+
+            return Ok(accesses);
+        }
+
+        [HttpPut("accesses/{id}")]
+        public async Task<IActionResult> ChangeAccess(int id, string key)
+        {
+            var invite = await _userManager.FindByIdAsync(id.ToString());
+            invite.AccessKey = key;
+
+            await _userManager.UpdateAsync(invite);
+
+            return NoContent();
+        }
+
+
+        [HttpPost("rsvp/{id}")]
+        public async Task<IActionResult> UpdateInvite(int id, InviteUpdateDto inviteDetails)
+        {
+            var invite = await _repo.GetInviteDetails(id);
+            invite.fromUpdateDto(inviteDetails, _mapper);
+            var validAnswer = invite.InviteAnswers.Where(ia => ia.Status == "V").FirstOrDefault().Status = "A";
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            return BadRequest("Failed to Post RSVP");
+        }
+
+        [HttpPost("createadmin")]
+        public async Task<IActionResult> CreateAdminAcess(string username, string key)
+        {
+            var invite = new Invite
+            {
+                UserName = username,
+                AccessKey = key,
+                Created = DateTime.Now,
+                LastActive = DateTime.Now
+            };
+
+            await _userManager.CreateAsync(invite);
+            await _userManager.AddToRoleAsync(invite, "Admin");
             return NoContent();
 
         }

@@ -20,9 +20,11 @@ namespace OurWedding.API.Helpers
                         .OrderByDescending(i => i.AnswerDate).FirstOrDefault().AnswerDate));
 
             CreateMap<RecommendationDto, Recommendation>();
+            CreateMap<Invite, AccessesDto>();
 
             CreateMappingsForDisplay();
             CreateMappingsForUpdate();
+
 
         }
 
