@@ -22,7 +22,6 @@ export class ManageAccessesComponent implements OnInit {
     this.route.data.subscribe((data) => {
       this.acesses = data['accesses'];
     });
-    console.log(this.acesses);
   }
 
   getAcces(isAdmin: boolean) {

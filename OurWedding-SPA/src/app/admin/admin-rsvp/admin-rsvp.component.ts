@@ -22,7 +22,6 @@ export class AdminRsvpComponent implements OnInit {
     this.route.data.subscribe((data) => {
       this.invite = data['invite'];
     });
-    console.log(this.invite);
   }
 
   onInviteSubmit(event: any) {

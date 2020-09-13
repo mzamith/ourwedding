@@ -30,7 +30,6 @@ export class CreateAdminComponent implements OnInit {
   submit() {
     if (this.insertAdminForm.valid) {
       this.access = Object.assign({}, this.insertAdminForm.value);
-      console.log(this.access);
       this.adminService
         .createAdmin(this.access.username, this.access.accessKey)
         .subscribe(

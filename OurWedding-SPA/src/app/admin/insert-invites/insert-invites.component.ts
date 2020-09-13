@@ -20,9 +20,7 @@ export class InsertInvitesComponent implements OnInit {
   ngOnInit() {}
 
   go() {
-    console.log(this.invitesJson);
     const invites: Invite[] = JSON.parse(this.invitesJson);
-    console.log(invites);
     this.adminService.createInvites(invites).subscribe(
       () => {
         this.invitesJson = '';
