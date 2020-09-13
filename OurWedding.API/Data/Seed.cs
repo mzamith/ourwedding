@@ -13,9 +13,6 @@ namespace OurWedding.API.Data
         {
             if (!userManager.Users.Any())
             {
-                var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
-                // var invites = JsonConvert.DeserializeObject<List<Invite>>(userData);
-
                 var roles = new List<Role>
                 {
                     new Role{Name = "Guest"},
@@ -27,19 +24,13 @@ namespace OurWedding.API.Data
                     roleManager.CreateAsync(role).Wait();
                 }
 
-                // foreach (var invite in invites)
-                // {
-                //     userManager.CreateAsync(invite, "password").Wait();
-                //     userManager.AddToRoleAsync(invite, "Guest").Wait();
-                // }
-
                 var adminUser = new Invite
                 {
                     UserName = "BrideAndGroom",
                     AccessKey = conf.GetSection("AppSettings:AdminKey").Value
                 };
 
-                var result = userManager.CreateAsync(adminUser, "password").Result;
+                var result = userManager.CreateAsync(adminUser).Result;
                 if (result.Succeeded)
                 {
                     var admin = userManager.FindByNameAsync("BrideAndGroom").Result;
