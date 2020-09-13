@@ -98,14 +98,12 @@ namespace OurWedding.API
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
-            //services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IWeddingRepository, WeddingRepository>();
             services.AddScoped<LogUserActivity>();
             services.AddScoped<IEmailService, EmailService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
