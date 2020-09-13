@@ -20,7 +20,8 @@ namespace OurWedding.API.Helpers
                         .OrderByDescending(i => i.AnswerDate).FirstOrDefault().AnswerDate));
 
             CreateMap<RecommendationDto, Recommendation>();
-            CreateMap<Invite, AccessesDto>();
+            CreateMap<Invite, AccessesDto>()
+                .ForMember(dest => dest.IsAdmin, opt => opt.MapFrom(src => src.UserRoles.Select(ur => ur.Role.Name).Contains("Admin")));
 
             CreateMappingsForDisplay();
             CreateMappingsForUpdate();

@@ -12,8 +12,11 @@
       <a [routerLink]="[{ outlets: { admin: ['recommendations'] } }]" (click)=" nav_toggle($event)"
         class="list-group-item list-group-item-action bg-light">Recomendações</a>
       <a [routerLink]="[{ outlets: { admin: ['createrecommendations'] } }]" (click)=" nav_toggle($event)"
-        class="list-group-item list-group-item-action bg-light">Criar
-        Recomendações</a>
+        class="list-group-item list-group-item-action bg-light">Criar Recomendações</a>
+      <a [routerLink]="[{ outlets: { admin: ['accesses'] } }]" (click)=" nav_toggle($event)"
+        class="list-group-item list-group-item-action bg-light">Gerir Acessos</a>
+      <a [routerLink]="[{ outlets: { admin: ['createadmin'] } }]" (click)=" nav_toggle($event)"
+        class="list-group-item list-group-item-action bg-light">Criar Administrador</a>
 
     </div>
   </div>

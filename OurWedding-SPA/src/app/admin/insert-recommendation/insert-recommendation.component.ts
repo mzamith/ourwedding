@@ -38,13 +38,13 @@ export class InsertRecommendationComponent implements OnInit {
   submit() {
     if (this.recommendationForm.valid) {
       this.recommendation = Object.assign({}, this.recommendationForm.value);
-      console.log(this.recommendation);
       this.recommendationService
         .createRecommendation(this.recommendation)
         .subscribe(
           () => {
             this.alert.success('Recomendação criada');
             this.recommendationForm.reset();
+            this.submitted = false;
             this.recommendationForm.get('category').setValue('Parking');
           },
           (error) => this.alert.danger(error)

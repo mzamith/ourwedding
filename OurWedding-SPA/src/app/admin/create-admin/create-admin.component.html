@@ -1,0 +1,19 @@
+<div class="container-fluid mb-5 mt-4">
+  <h1>Criar Administrador</h1>
+  <hr />
+  <form [formGroup]="insertAdminForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': insertAdminForm.get('username').errors && submitted}" class="form-control"
+        placeholder="Nome" formControlName="username">
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': insertAdminForm.get('accessKey').errors && submitted}" class="form-control"
+        placeholder="Chave de Acesso" formControlName="accessKey">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Criar</button>
+    </div>
+
+  </form>
+</div>

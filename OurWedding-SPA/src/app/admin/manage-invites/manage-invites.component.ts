@@ -57,16 +57,6 @@ export class ManageInvitesComponent implements OnInit {
       ?.wantsTransportation;
   }
 
-  blacklist(id: number, blacklist: boolean) {
-    this.adminService.blacklistInvite(id, blacklist).subscribe(
-      () => {
-        this.alert.success('Sucesso');
-        this.invites.find((i) => i.id === id).isBlacklisted = blacklist;
-      },
-      (error) => this.alert.danger(error)
-    );
-  }
-
   filterInvites(key: string) {
     if (key === 'BRIDE' || key === 'GROOM') {
       this.invites = this.invitesMemory.filter((i) => i.team === key);

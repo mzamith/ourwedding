@@ -1,0 +1,49 @@
+<div class="container-fluid mb-5 mt-4">
+  <h1>Gestão de Acessos</h1>
+  <hr />
+  <h3>Convites</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Chave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let access of getAcces(false)">
+        <td>{{access.name}}</td>
+        <td>{{access.accessKey}}</td>
+        <td>
+          <button type="button" class="btn btn-danger mr-1" *ngIf="!access.isBlacklisted"
+            (click)="blacklist(access.id, true)"><small class="bold">
+              Retirar</small></button>
+          <button type="button" class="btn btn-info" *ngIf="access.isBlacklisted"
+            (click)="blacklist(access.id, false)"><small class="bold">Repor</small></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Administradores</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Chave</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let access of getAcces(true)">
+        <td class="ma">{{access.username}}</td>
+        <td>{{access.accessKey}}</td>
+        <td>
+          <button type="button" class="btn btn-danger mr-1" *ngIf="!access.isBlacklisted"
+            (click)="blacklist(access.id, true)"><small class="bold">
+              Retirar</small></button>
+          <button type="button" class="btn btn-info" *ngIf="access.isBlacklisted"
+            (click)="blacklist(access.id, false)"><small class="bold">Repor</small></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

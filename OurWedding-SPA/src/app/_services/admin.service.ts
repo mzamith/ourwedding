@@ -1,3 +1,4 @@
+import { Access } from './../_models/Access';
 import { DetailedInvite } from './../_models/DetailedInvite';
 import { Invite } from './../_models/Invite';
 import { PaginatedResult } from './../_models/pagination';
@@ -67,5 +68,20 @@ export class AdminService {
 
   createInvites(model: Invite[]) {
     return this.http.post(this.baseUrl + 'invites', model);
+  }
+
+  getAccesses() {
+    return this.http.get<Access[]>(this.baseUrl + 'accesses');
+  }
+
+  changeAccess(id: number, key: string) {
+    return this.http.put(this.baseUrl + 'accesses/' + id + '?key=' + key, {});
+  }
+
+  createAdmin(username: string, key: string) {
+    return this.http.post(
+      this.baseUrl + 'createadmin?username=' + username + '&key=' + key,
+      {}
+    );
   }
 }

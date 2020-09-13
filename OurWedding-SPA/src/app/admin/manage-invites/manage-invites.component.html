@@ -111,11 +111,6 @@
           <button type="button" class="btn btn-secondary mr-1 bold" [disabled]="invite.inviteAnswers.length === 0"
             (click)="openScrollableContent(longContent, invite)"> <small class="bold">
               Histórico</small></button>
-          <button type="button" class="btn btn-danger mr-1" [disabled]="invite.isBlacklisted"
-            (click)="blacklist(invite.id, true)"><small class="bold">
-              Retirar Acesso</small></button>
-          <button type="button" class="btn btn-info" [disabled]="!invite.isBlacklisted"
-            (click)="blacklist(invite.id, false)"><small class="bold">Repor Acesso</small></button>
         </div>
       </div>
     </div>

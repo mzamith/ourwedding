@@ -1,3 +1,6 @@
+import { ManageAccessesComponent } from './admin/manage-accesses/manage-accesses.component';
+import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
+import { AdminAccessesResolver } from './_resolvers/admin-accesses.resolver';
 import { InvitesOverviewComponent } from './admin/invites-overview/invites-overview.component';
 import { InsertRecommendationComponent } from './admin/insert-recommendation/insert-recommendation.component';
 import { InsertInvitesComponent } from './admin/insert-invites/insert-invites.component';
@@ -69,6 +72,17 @@ export const appRoutes: Routes = [
           {
             path: 'createrecommendations',
             component: InsertRecommendationComponent,
+            outlet: 'admin',
+          },
+          {
+            path: 'accesses',
+            component: ManageAccessesComponent,
+            resolve: { accesses: AdminAccessesResolver },
+            outlet: 'admin',
+          },
+          {
+            path: 'createadmin',
+            component: CreateAdminComponent,
             outlet: 'admin',
           },
         ],

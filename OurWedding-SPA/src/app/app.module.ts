@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgbToastModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,6 +28,8 @@ import { InsertRecommendationComponent } from './admin/insert-recommendation/ins
 import { InvitesOverviewComponent } from './admin/invites-overview/invites-overview.component';
 import { RecommendationCardComponent } from './guest/recommendations/recommendation-card/recommendation-card.component';
 import { RsvpPreviewCardComponent } from './guest/rsvp-preview/rsvp-preview-card/rsvp-preview-card.component';
+import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
+import { ManageAccessesComponent } from './admin/manage-accesses/manage-accesses.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -38,9 +41,9 @@ import { RecommendationsResolver } from './_resolvers/recommendations.resolver';
 import { InviteResolver } from './_resolvers/invite.resolver';
 import { AdminService } from './_services/admin.service';
 import { AdminResolver } from './_resolvers/admin.resolver';
+import { AdminAccessesResolver } from './_resolvers/admin-accesses.resolver';
 
 import { appRoutes } from './routes';
-import { DatePipe } from '@angular/common';
 
 export function getToken(): string {
   return localStorage.getItem('token');
@@ -67,6 +70,8 @@ export function getToken(): string {
     InvitesOverviewComponent,
     RecommendationCardComponent,
     RsvpPreviewCardComponent,
+    ManageAccessesComponent,
+    CreateAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +101,7 @@ export function getToken(): string {
     InviteResolver,
     AdminService,
     AdminResolver,
+    AdminAccessesResolver,
     DatePipe,
   ],
   bootstrap: [AppComponent],
