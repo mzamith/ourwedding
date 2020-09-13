@@ -34,10 +34,10 @@ namespace OurWedding.API.Helpers
 
             //User Display
             CreateMap<Invite, InviteDetailsDto>()
-                .ForMember(dest => dest.InviteAnswer, opt => opt.MapFrom(src => src.InviteAnswers.FirstOrDefault(ia => ia.Status == "V")));
+                .ForMember(dest => dest.InviteAnswer, opt => opt.MapFrom(src => src.InviteAnswers.FirstOrDefault(ia => ia.Status != "H")));
 
             CreateMap<Invitee, InviteeDto>()
-                .ForMember(dest => dest.InviteeAnswer, opt => opt.MapFrom(src => src.InviteeAnswers.FirstOrDefault(ia => ia.Status == "V")));
+                .ForMember(dest => dest.InviteeAnswer, opt => opt.MapFrom(src => src.InviteeAnswers.FirstOrDefault(ia => ia.Status != "H")));
 
             CreateMap<InviteeAnswer, InviteeAnswerDto>();
             CreateMap<InviteAnswer, InviteAnswerDto>();

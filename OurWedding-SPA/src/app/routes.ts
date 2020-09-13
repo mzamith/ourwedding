@@ -1,3 +1,5 @@
+import { AdminInviteResolver } from './_resolvers/admin.invite.resolver';
+import { AdminRsvpComponent } from './admin/admin-rsvp/admin-rsvp.component';
 import { ManageAccessesComponent } from './admin/manage-accesses/manage-accesses.component';
 import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
 import { AdminAccessesResolver } from './_resolvers/admin-accesses.resolver';
@@ -83,6 +85,12 @@ export const appRoutes: Routes = [
           {
             path: 'createadmin',
             component: CreateAdminComponent,
+            outlet: 'admin',
+          },
+          {
+            path: 'adminrsvp/:id',
+            component: AdminRsvpComponent,
+            resolve: { invite: AdminInviteResolver },
             outlet: 'admin',
           },
         ],

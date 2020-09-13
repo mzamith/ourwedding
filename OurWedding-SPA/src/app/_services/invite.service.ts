@@ -12,8 +12,8 @@ export class InviteService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getInvite() {
-    return this.http.get(this.baseUrl + this.authService.currentInvite.id);
+  getInvite(id: number) {
+    return this.http.get(this.baseUrl + id);
   }
 
   postInvite(model: Invite) {

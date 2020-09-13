@@ -1,3 +1,4 @@
+import { InviteAnswer } from './../../_models/Invite';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from './../../_services/alert.service';
@@ -36,11 +37,11 @@ export class ManageInvitesComponent implements OnInit {
   }
 
   getCurrentAnswer(invite: DetailedInvite) {
-    return invite.inviteAnswers.find((ia) => ia.status === 'V');
+    return invite.inviteAnswers.find((ia) => ia.status !== 'H');
   }
 
   getCurrentAttendence(invitee: DetailedInvitee) {
-    const attendence = invitee.inviteeAnswers.find((ia) => ia.status === 'V');
+    const attendence = invitee.inviteeAnswers.find((ia) => ia.status !== 'H');
     return attendence === undefined
       ? ''
       : attendence.isAttending
@@ -49,11 +50,11 @@ export class ManageInvitesComponent implements OnInit {
   }
 
   getCurrentRestriction(invitee: DetailedInvitee) {
-    return invitee.inviteeAnswers.find((ia) => ia.status === 'V')?.restriction;
+    return invitee.inviteeAnswers.find((ia) => ia.status !== 'H')?.restriction;
   }
 
   getCurrentTransport(invite: DetailedInvite) {
-    return invite.inviteAnswers.find((ia) => ia.status === 'V')
+    return invite.inviteAnswers.find((ia) => ia.status !== 'H')
       ?.wantsTransportation;
   }
 
@@ -123,5 +124,12 @@ export class ManageInvitesComponent implements OnInit {
       },
       (error) => this.alert.danger(error)
     );
+  }
+
+  isAdminAnswer(answers: InviteAnswer[]) {
+    if (answers.length === 0) {
+      return false;
+    }
+    return answers.filter((a) => a.status === 'A').length > 0;
   }
 }

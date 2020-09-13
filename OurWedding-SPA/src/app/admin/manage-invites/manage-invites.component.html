@@ -25,6 +25,7 @@
           </tr>
         </tbody>
       </table>
+      <p><b>Transporte:</b> {{answer.wantsTransportation ? 'Sim': 'Não'}}</p>
       <p><b>Comentário:</b> {{answer.comment}}</p>
       <hr />
     </div>
@@ -67,10 +68,12 @@
           </div>
           <div class="col-4 ma">
             <small
-              [ngClass]="{'text-success': invite.inviteAnswers.length > 0, 'text-warning': invite.inviteAnswers.length === 0}"
+              [ngClass]="{'text-success': invite.inviteAnswers.length > 0 && !isAdminAnswer(invite.inviteAnswers), 'text-warning': invite.inviteAnswers.length === 0, 'text-primary': isAdminAnswer(invite.inviteAnswers)}"
               class="ma">
-              <i *ngIf="invite.inviteAnswers.length > 0" class="fa fa-check-circle"></i> <i
-                *ngIf="invite.inviteAnswers.length === 0" class="fa fa-minus-circle"></i>
+              <i *ngIf="invite.inviteAnswers.length > 0 && !isAdminAnswer(invite.inviteAnswers)"
+                class="fa fa-check-circle"></i>
+              <i *ngIf="invite.inviteAnswers.length === 0" class="fa fa-minus-circle"></i>
+              <i *ngIf="isAdminAnswer(invite.inviteAnswers)" class="fa fa-wrench"></i>
               {{invite.inviteAnswers.length > 0 ? 'Respondido' : 'Pendente'}}
               <span *ngIf="invite.inviteAnswers.length > 0">({{getCurrentAnswer(invite).answerDate | date}})</span>
             </small>
@@ -111,6 +114,9 @@
           <button type="button" class="btn btn-secondary mr-1 bold" [disabled]="invite.inviteAnswers.length === 0"
             (click)="openScrollableContent(longContent, invite)"> <small class="bold">
               Histórico</small></button>
+          <button type="button" class="btn btn-primary mr-1 bold"
+            [routerLink]="['/admin', { outlets: { 'admin': ['adminrsvp', invite.id] } }]"><small class="bold">Inserir
+              Resposta</small></button>
         </div>
       </div>
     </div>

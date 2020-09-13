@@ -84,4 +84,8 @@ export class AdminService {
       {}
     );
   }
+
+  insertAnswerAdmin(id: number, invite: Invite) {
+    return this.http.post(this.baseUrl + 'rsvp/' + id, invite);
+  }
 }

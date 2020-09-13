@@ -26,7 +26,7 @@ export class InvitesOverviewComponent implements OnInit {
       i.invitees.forEach((iv) => {
         if (iv.inviteeAnswers.length > 0) {
           iv.inviteeAnswers.forEach((ia) => {
-            if (ia.status === 'V') {
+            if (ia.status !== 'H') {
               if (i.team === 'GROOM') {
                 this.groomGuests.push({
                   name: iv.name,

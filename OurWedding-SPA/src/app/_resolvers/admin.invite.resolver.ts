@@ -8,7 +8,7 @@ import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class InviteResolver implements Resolve<Invite> {
+export class AdminInviteResolver implements Resolve<Invite> {
   constructor(
     private inviteService: InviteService,
     private authService: AuthService,
@@ -17,7 +17,7 @@ export class InviteResolver implements Resolve<Invite> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Invite> {
-    return this.inviteService.getInvite(this.authService.currentInvite.id).pipe(
+    return this.inviteService.getInvite(route.params['id']).pipe(
       catchError((error) => {
         this.router.navigate(['/home']);
         this.alert.danger(error);

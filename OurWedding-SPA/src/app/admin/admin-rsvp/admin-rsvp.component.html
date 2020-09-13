@@ -1,0 +1,5 @@
+<div class="container-fluid mb-5 mt-4">
+  <h1>Inserir Resposta</h1>
+  <hr />
+  <app-rsvp-form [invite]="invite" (updatedInvite)="onInviteSubmit($event)" (canceled)="cancel($event)"></app-rsvp-form>
+</div>

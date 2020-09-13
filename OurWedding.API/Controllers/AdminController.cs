@@ -119,7 +119,7 @@ namespace OurWedding.API.Controllers
         {
             var invite = await _repo.GetInviteDetails(id);
             invite.fromUpdateDto(inviteDetails, _mapper);
-            var validAnswer = invite.InviteAnswers.Where(ia => ia.Status == "V").FirstOrDefault().Status = "A";
+            var validAnswer = invite.InviteAnswers.Where(ia => ia.Status != "H").FirstOrDefault().Status = "A";
 
             if (await _repo.SaveAll())
                 return NoContent();

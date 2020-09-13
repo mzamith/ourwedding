@@ -1,0 +1,47 @@
+.custom-switch .custom-switch-label::after {
+  background-color: #B68F16 !important;
+}
+
+.custom-checkbox .custom-control-switch:indeterminate~.custom-control-label::before {
+  border-color: #B68F16;
+  background-color: #B68F16;
+}
+
+.custom-control-switch:checked~.custom-switch-label::before {
+  color: #fff !important;
+  border-color: #440402 !important;
+  background-color: #440402 !important;
+}
+
+.custom-control-input-gold:focus~.custom-control-label::before {
+  border-color: #B68F16 !important;
+  box-shadow: 0 0 0 0.2rem rgba(146, 115, 58, 0.25) !important;
+}
+
+.custom-control-input-gold:checked~.custom-control-label::before {
+  border-color: #B68F16 !important;
+  background-color: #B68F16 !important;
+}
+
+.custom-control-input-gold:focus:not(:checked)~.custom-control-label::before {
+  border-color: #B68F16 !important;
+}
+
+.custom-control-input-gold:not(:disabled):active~.custom-control-label::before {
+  background-color: #d6f5dd !important;
+  border-color: #d6f5dd !important;
+}
+
+
+.btn-success {
+  background-color: #B68F16 !important;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    margin-right: 2rem !important;
+    margin-left: 2rem !important;
+  }
+
+}

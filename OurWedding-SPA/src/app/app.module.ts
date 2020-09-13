@@ -30,6 +30,8 @@ import { RecommendationCardComponent } from './guest/recommendations/recommendat
 import { RsvpPreviewCardComponent } from './guest/rsvp-preview/rsvp-preview-card/rsvp-preview-card.component';
 import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
 import { ManageAccessesComponent } from './admin/manage-accesses/manage-accesses.component';
+import { RsvpFormComponent } from './guest/rsvp/rsvp-form/rsvp-form.component';
+import { AdminRsvpComponent } from './admin/admin-rsvp/admin-rsvp.component';
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthService } from './_services/auth.service';
@@ -42,6 +44,7 @@ import { InviteResolver } from './_resolvers/invite.resolver';
 import { AdminService } from './_services/admin.service';
 import { AdminResolver } from './_resolvers/admin.resolver';
 import { AdminAccessesResolver } from './_resolvers/admin-accesses.resolver';
+import { AdminInviteResolver } from './_resolvers/admin.invite.resolver';
 
 import { appRoutes } from './routes';
 
@@ -72,6 +75,8 @@ export function getToken(): string {
     RsvpPreviewCardComponent,
     ManageAccessesComponent,
     CreateAdminComponent,
+    RsvpFormComponent,
+    AdminRsvpComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +107,7 @@ export function getToken(): string {
     AdminService,
     AdminResolver,
     AdminAccessesResolver,
+    AdminInviteResolver,
     DatePipe,
   ],
   bootstrap: [AppComponent],

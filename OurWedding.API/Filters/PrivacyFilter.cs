@@ -12,7 +12,10 @@ namespace OurWedding.API.Filters
         {
             object id;
             context.HttpContext.Request.RouteValues.TryGetValue("id", out id);
-            if (int.Parse((string)id) != int.Parse(context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            var userId = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userRole = context.HttpContext.User.FindFirst(ClaimTypes.Role).Value;
+
+            if (int.Parse((string)id) != int.Parse(userId) && userRole != "Admin")
                 context.Result = new UnauthorizedResult();
         }
 
