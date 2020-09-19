@@ -4,7 +4,6 @@
   filter: grayscale(100%);
 }
 
-
 p {
   font-size: 2vh;
   color: white;
@@ -13,7 +12,7 @@ p {
 }
 
 h1 {
-  color: white
+  color: white;
 }
 
 .row-container {
@@ -25,15 +24,15 @@ h1 {
 
 img {
   object-fit: cover;
-  width: 100%
+  width: 100%;
 }
 
-@media(max-width: 599px) {
+@media (max-width: 800px) {
   .row-container {
     text-align: center;
     min-height: 80vh;
     position: relative;
-    width: 100%
+    width: 100%;
   }
 
   .row {
@@ -45,11 +44,11 @@ img {
   }
 
   .rel-container {
-    width: 100%
+    width: 100%;
   }
 }
 
-@media(min-width: 599px) {
+@media (min-width: 800px) {
   .row {
     height: 100%;
     position: absolute;

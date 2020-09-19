@@ -1,8 +1,11 @@
 <div *ngIf="getParking().length > 0" class="container mb-5 text-center">
   <h1 class="mb-4 styled-title">Estacionamento</h1>
   <div class="row align-items-center">
-    <div *ngFor=" let recom of getParking()" class="col-sm-4 col-12">
-      <app-recommendation-card [recommendation]="recom" [priceTag]="'por hora'"></app-recommendation-card>
+    <div *ngFor="let recom of getParking()" class="col-lg-4 col-12">
+      <app-recommendation-card
+        [recommendation]="recom"
+        [priceTag]="'por hora'"
+      ></app-recommendation-card>
     </div>
   </div>
 </div>
@@ -10,8 +13,11 @@
 <div *ngIf="getHotels().length > 0" class="container mb-5 text-center">
   <h1 class="mb-4 styled-title">Alojamento</h1>
   <div class="row align-items-center">
-    <div *ngFor=" let recom of getHotels()" class="col-sm-4 col-12">
-      <app-recommendation-card [recommendation]="recom" [priceTag]="'por dia'"></app-recommendation-card>
+    <div *ngFor="let recom of getHotels()" class="col-lg-4 col-12">
+      <app-recommendation-card
+        [recommendation]="recom"
+        [priceTag]="'por dia'"
+      ></app-recommendation-card>
     </div>
   </div>
 </div>

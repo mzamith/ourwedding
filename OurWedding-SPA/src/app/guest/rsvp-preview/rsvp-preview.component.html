@@ -1,12 +1,13 @@
 <div class="row-container container-fluid text-center">
   <div class="row h-100">
+    <app-rsvp-preview-card
+      class="col-12 col-lg-4 h-100 card-parent"
+      [invite]="invite"
+      [content]="cardContent"
+    ></app-rsvp-preview-card>
 
-    <app-rsvp-preview-card class="col-12 col-sm-12 col-md-4 h-100 card-parent" [invite]="invite"
-      [content]="cardContent"></app-rsvp-preview-card>
-
-    <div class="col-8 pr-0 d-none d-sm-block">
+    <div class="col-8 pr-0 d-none d-lg-block">
       <div class="cover-img h-100 w-100 p-0"></div>
     </div>
-
   </div>
 </div>
