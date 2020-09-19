@@ -1,6 +1,7 @@
 import { DetailedInvite } from './../../_models/DetailedInvite';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CsvService } from 'src/app/_services/csv.service';
 
 @Component({
   selector: 'app-invites-overview',
@@ -12,7 +13,7 @@ export class InvitesOverviewComponent implements OnInit {
   brideGuests: any[] = [];
   groomGuests: any[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private csvService: CsvService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
@@ -31,27 +32,66 @@ export class InvitesOverviewComponent implements OnInit {
                 this.groomGuests.push({
                   name: iv.name,
                   status: ia.isAttending ? 'Sim' : 'Não',
+                  invite: i.id,
                 });
               } else {
                 this.brideGuests.push({
                   name: iv.name,
                   status: ia.isAttending ? 'Sim' : 'Não',
+                  invite: i.id,
                 });
               }
             }
           });
         } else {
           if (i.team === 'GROOM') {
-            this.groomGuests.push({ name: iv.name, status: 'Pendente' });
+            this.groomGuests.push({
+              name: iv.name,
+              status: 'Pendente',
+              invite: i.id,
+            });
           } else {
-            this.brideGuests.push({ name: iv.name, status: 'Pendente' });
+            this.brideGuests.push({
+              name: iv.name,
+              status: 'Pendente',
+              invite: i.id,
+            });
           }
         }
       });
     });
   }
 
-  filterAttendence(statusList: any[], key: string) {
+  flattenGuests(): any[] {
+    const guests: any[] = [];
+
+    this.invites.forEach((i) => {
+      i.invitees.forEach((iv) => {
+        const answer = i.inviteAnswers.find((ias) => ias.status !== 'H');
+        if (answer) {
+          const inviteeAnswer = iv.inviteeAnswers.find(
+            (ias) => ias.status !== 'H'
+          );
+          if (inviteeAnswer.isAttending) {
+            guests.push({
+              invite: i.name,
+              name: iv.name,
+              comment: answer.comment,
+              transport: answer.wantsTransportation,
+              restriction: inviteeAnswer.restriction,
+            });
+          }
+        }
+      });
+    });
+    return guests;
+  }
+
+  export() {
+    this.csvService.downloadFile(this.flattenGuests(), 'guests.csv');
+  }
+
+  filterAttendance(statusList: any[], key: string) {
     return statusList.filter((sl) => sl.status === key);
   }
 

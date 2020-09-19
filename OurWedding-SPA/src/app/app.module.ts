@@ -45,6 +45,7 @@ import { AdminService } from './_services/admin.service';
 import { AdminResolver } from './_resolvers/admin.resolver';
 import { AdminAccessesResolver } from './_resolvers/admin-accesses.resolver';
 import { AdminInviteResolver } from './_resolvers/admin.invite.resolver';
+import { CsvService } from './_services/csv.service';
 
 import { appRoutes } from './routes';
 
@@ -109,6 +110,7 @@ export function getToken(): string {
     AdminAccessesResolver,
     AdminInviteResolver,
     DatePipe,
+    CsvService,
   ],
   bootstrap: [AppComponent],
 })

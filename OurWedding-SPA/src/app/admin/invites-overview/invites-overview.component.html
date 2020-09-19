@@ -2,8 +2,17 @@
   <h1>Visão Geral</h1>
   <hr />
 
-  <p><b>Convites Totais:</b> {{invites.length}}</p>
-  <p><b>Convites Respondidos:</b> {{answeredInvites().length}}</p>
+  <p><b>Convites Totais:</b> {{ invites.length }}</p>
+  <p><b>Convites Respondidos:</b> {{ answeredInvites().length }}</p>
+
+  <button
+    type="button"
+    class="btn btn-success bold"
+    [disabled]="answeredInvites().length === 0"
+    (click)="export()"
+  >
+    <small class="bold">Exportar</small>
+  </button>
 
   <div class="container mt-4">
     <div class="row">
@@ -18,25 +27,51 @@
           </thead>
           <tbody>
             <tr *ngFor="let guestRecord of brideGuests">
-              <td>{{guestRecord.name}}</td>
+              <td>{{ guestRecord.name }}</td>
               <td
-                [ngClass]="{'text-success': guestRecord.status === 'Sim', 'text-danger': guestRecord.status === 'Não', 'text-warning': guestRecord.status === 'Pendente'}">
-                <i *ngIf="guestRecord.status === 'Pendente'" class="fa fa-exclamation-circle mr-2"></i><i
-                  *ngIf="guestRecord.status === 'Sim'" class="fa fa-check-circle mr-2"></i><i
-                  *ngIf="guestRecord.status === 'Não'" class="fa fa-times-circle mr-2"></i>{{guestRecord.status}}</td>
+                [ngClass]="{
+                  'text-success': guestRecord.status === 'Sim',
+                  'text-danger': guestRecord.status === 'Não',
+                  'text-warning': guestRecord.status === 'Pendente'
+                }"
+              >
+                <i
+                  *ngIf="guestRecord.status === 'Pendente'"
+                  class="fa fa-exclamation-circle mr-2"
+                ></i
+                ><i
+                  *ngIf="guestRecord.status === 'Sim'"
+                  class="fa fa-check-circle mr-2"
+                ></i
+                ><i
+                  *ngIf="guestRecord.status === 'Não'"
+                  class="fa fa-times-circle mr-2"
+                ></i
+                >{{ guestRecord.status }}
+              </td>
             </tr>
           </tbody>
         </table>
         <hr />
-        <small><b>Total: </b>{{brideGuests.length}}</small><br>
-        <small><b class="text-success">Confirmados:</b> {{filterAttendence(brideGuests, 'Sim').length}}</small><br>
-        <small><b class="text-danger">Rejeitados:</b> {{filterAttendence(brideGuests, 'Não').length}}</small><br>
-        <small><b class="text-warning">Pendentes:</b> {{filterAttendence(brideGuests, 'Pendente').length}}</small><br>
+        <small><b>Total: </b>{{ brideGuests.length }}</small
+        ><br />
+        <small
+          ><b class="text-success">Confirmados:</b>
+          {{ filterAttendance(brideGuests, "Sim").length }}</small
+        ><br />
+        <small
+          ><b class="text-danger">Rejeitados:</b>
+          {{ filterAttendance(brideGuests, "Não").length }}</small
+        ><br />
+        <small
+          ><b class="text-warning">Pendentes:</b>
+          {{ filterAttendance(brideGuests, "Pendente").length }}</small
+        ><br />
       </div>
 
       <div class="col-12 col-sm-6 mb-5">
         <h3>Manel</h3>
-        <table class="table ">
+        <table class="table">
           <thead>
             <tr>
               <th scope="col">Nome</th>
@@ -44,21 +79,55 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let guestRecord of groomGuests">
-              <td>{{guestRecord.name}}</td>
+            <tr *ngFor="let guestRecord of groomGuests; let i = index">
               <td
-                [ngClass]="{'text-success': guestRecord.status === 'Sim', 'text-danger': guestRecord.status === 'Não', 'text-warning': guestRecord.status === 'Pendente'}">
-                <i *ngIf="guestRecord.status === 'Pendente'" class="fa fa-exclamation-circle mr-2"></i><i
-                  *ngIf="guestRecord.status === 'Sim'" class="fa fa-check-circle mr-2"></i><i
-                  *ngIf="guestRecord.status === 'Não'" class="fa fa-times-circle mr-2"></i>{{guestRecord.status}}</td>
+                [ngClass]="{
+                  'hard-border':
+                    groomGuests[i + 1]?.invite !== groomGuests[i].invite
+                }"
+              >
+                {{ guestRecord.name }}
+              </td>
+              <td
+                [ngClass]="{
+                  'text-success': guestRecord.status === 'Sim',
+                  'text-danger': guestRecord.status === 'Não',
+                  'text-warning': guestRecord.status === 'Pendente',
+                  'hard-border':
+                    groomGuests[i + 1]?.invite !== groomGuests[i].invite
+                }"
+              >
+                <i
+                  *ngIf="guestRecord.status === 'Pendente'"
+                  class="fa fa-exclamation-circle mr-2"
+                ></i
+                ><i
+                  *ngIf="guestRecord.status === 'Sim'"
+                  class="fa fa-check-circle mr-2"
+                ></i
+                ><i
+                  *ngIf="guestRecord.status === 'Não'"
+                  class="fa fa-times-circle mr-2"
+                ></i
+                >{{ guestRecord.status }}
+              </td>
             </tr>
           </tbody>
         </table>
-        <hr />
-        <small><b>Total: </b>{{groomGuests.length}}</small><br>
-        <small><b class="text-success">Confirmados:</b> {{filterAttendence(groomGuests, 'Sim').length}}</small><br>
-        <small><b class="text-danger">Rejeitados:</b> {{filterAttendence(groomGuests, 'Não').length}}</small><br>
-        <small><b class="text-warning">Pendentes:</b> {{filterAttendence(groomGuests, 'Pendente').length}}</small><br>
+        <small><b>Total: </b>{{ groomGuests.length }}</small
+        ><br />
+        <small
+          ><b class="text-success">Confirmados:</b>
+          {{ filterAttendance(groomGuests, "Sim").length }}</small
+        ><br />
+        <small
+          ><b class="text-danger">Rejeitados:</b>
+          {{ filterAttendance(groomGuests, "Não").length }}</small
+        ><br />
+        <small
+          ><b class="text-warning">Pendentes:</b>
+          {{ filterAttendance(groomGuests, "Pendente").length }}</small
+        ><br />
       </div>
     </div>
   </div>
